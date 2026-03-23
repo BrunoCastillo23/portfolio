@@ -29,39 +29,38 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   ABOUT — Stats en 2x2 dentro de la columna izquierda
-   pegados justo debajo del texto, sin hueco
+   ABOUT — Stats 4 columnas × 1 fila dentro del hueco
+   de la columna izquierda, pegados al texto
 ══════════════════════════════════════════════════════ */
-
-/* Grid del about: columna izquierda ocupa el espacio del texto + stats */
 .about__content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* texto arriba, stats abajo */
 }
 
-/* Stats 2×2 dentro de la columna izquierda */
+/* 4 columnas × 1 fila — ocupa todo el ancho de la columna izquierda */
 .about__stats-inline {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 24px; /* separación pequeña del texto */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 24px;
 }
 .about__stats-inline .stat-card {
-  padding: 20px 16px;
+  padding: 16px 8px;
   text-align: center;
 }
 .about__stats-inline .stat-card__num {
-  font-size: 32px;
+  font-size: 26px;
   display: block;
   text-align: center;
 }
 .about__stats-inline .stat-card__label {
   text-align: center;
+  font-size: 11px;
   margin-top: 4px;
+  line-height: 1.4;
 }
 
-/* Quita el about__stats-row si quedó del intento anterior */
+/* Oculta variantes anteriores */
 .about__stats-row { display: none; }
 
 /* ══════════════════════════════════════════════════════
@@ -137,10 +136,11 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .about__stats-inline { grid-template-columns: 1fr 1fr; }
+  /* En móvil la columna izquierda es más angosta → 2×2 */
+  .about__stats-inline { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 480px) {
-  .about__stats-inline { gap: 10px; }
-  .about__stats-inline .stat-card { padding: 16px 12px; }
-  .about__stats-inline .stat-card__num { font-size: 26px; }
+  .about__stats-inline { gap: 8px; }
+  .about__stats-inline .stat-card { padding: 14px 8px; }
+  .about__stats-inline .stat-card__num { font-size: 22px; }
 }
