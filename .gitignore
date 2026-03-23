@@ -10,7 +10,7 @@ dist-ssr/
 Thumbs.db
 desktop.ini
 
-# Variables de entorno
+# Variables de entorno — NUNCA subir al repo
 .env
 .env.local
 .env.*.local

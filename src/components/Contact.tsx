@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { contactLinks } from '../data/portfolio';
+import {
+  checkRateLimit,
+  registerSubmission,
+  sanitize,
+  validateForm,
+} from '../hooks/useFormSecurity';
 
-// ── EmailJS config ──────────────────────────────────
-const EJ_SERVICE  = 'service_yjvvhd6';
-const EJ_TEMPLATE = 'template_07s1suo';
-const EJ_PUBLIC   = '_QdYPwKMMi64M2bwD';
+// ── Keys desde variables de entorno (.env.local) ────────────────────────────
+const EJ_SERVICE  = import.meta.env.VITE_EJ_SERVICE  as string;
+const EJ_TEMPLATE = import.meta.env.VITE_EJ_TEMPLATE as string;
+const EJ_PUBLIC   = import.meta.env.VITE_EJ_PUBLIC   as string;
 
-// ── Iconos ──────────────────────────────────────────
+// ── Iconos ──────────────────────────────────────────────────────────────────
 const PhoneIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.44 2 2 0 0 1 3.58 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l1.62-1.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -39,10 +44,10 @@ const SendIcon = () => (
 );
 
 const allLinks = [
-  { icon: 'phone' as const,   label: 'WhatsApp / Llamada',  value: '+51 912 293 737',            href: 'tel:+51912293737' },
-  { icon: 'email' as const,   label: 'Email personal',      value: 'castillobruno0104@gmail.com', href: 'mailto:castillobruno0104@gmail.com' },
-  { icon: 'github' as const,  label: 'GitHub',              value: 'github.com/BrunoCastillo23',  href: 'https://github.com/BrunoCastillo23' },
-  { icon: 'linkedin' as const,label: 'LinkedIn',            value: 'Bruno Castillo Robles',       href: 'https://www.linkedin.com/in/bruno-castillo-robles' },
+  { icon: 'phone'   as const, label: 'WhatsApp / Llamada',  value: '+51 912 293 737',             href: 'tel:+51912293737' },
+  { icon: 'email'   as const, label: 'Email personal',      value: 'castillobruno0104@gmail.com', href: 'mailto:castillobruno0104@gmail.com' },
+  { icon: 'github'  as const, label: 'GitHub',              value: 'github.com/BrunoCastillo23',  href: 'https://github.com/BrunoCastillo23' },
+  { icon: 'linkedin'as const, label: 'LinkedIn',            value: 'Bruno Castillo Robles',       href: 'https://www.linkedin.com/in/bruno-castillo-robles' },
 ];
 
 const iconMap = {
@@ -52,11 +57,14 @@ const iconMap = {
   linkedin: <LinkedinIcon />,
 };
 
-// ── Estado del formulario ───────────────────────────
-type Status = 'idle' | 'sending' | 'success' | 'error';
+type Status = 'idle' | 'sending' | 'success' | 'error' | 'rate_limited';
 
 const Contact: React.FC = () => {
-  const [status, setStatus] = useState<Status>('idle');
+  const [status,     setStatus]     = useState<Status>('idle');
+  const [errors,     setErrors]     = useState<Record<string, string>>({});
+  const [minutesLeft,setMinutesLeft]= useState(0);
+  const honeypotRef = useRef<HTMLInputElement>(null);
+
   const [form, setForm] = useState({
     from_name:  '',
     from_email: '',
@@ -65,15 +73,53 @@ const Contact: React.FC = () => {
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+    // Limpia el error del campo al escribir
+    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // ── 1. Honeypot — si el campo oculto tiene contenido → es un bot
+    if (honeypotRef.current?.value) {
+      console.warn('Bot detectado — honeypot activado');
+      return;
+    }
+
+    // ── 2. Rate limiting
+    const { allowed, minutesLeft: ml } = checkRateLimit();
+    if (!allowed) {
+      setMinutesLeft(ml);
+      setStatus('rate_limited');
+      return;
+    }
+
+    // ── 3. Validación
+    const { valid, errors: validationErrors } = validateForm(form);
+    if (!valid) {
+      setErrors(validationErrors);
+      return;
+    }
+
     setStatus('sending');
+    setErrors({});
+
+    // ── 4. Sanitización antes de enviar
+    const safePayload = {
+      from_name:  sanitize(form.from_name),
+      from_email: sanitize(form.from_email),
+      subject:    sanitize(form.subject || 'Sin asunto'),
+      message:    sanitize(form.message),
+    };
 
     try {
-      await emailjs.send(EJ_SERVICE, EJ_TEMPLATE, form, EJ_PUBLIC);
+      await emailjs.send(EJ_SERVICE, EJ_TEMPLATE, safePayload, EJ_PUBLIC);
+
+      // ── 5. Registrar envío para rate limiting
+      registerSubmission();
+
       setStatus('success');
       setForm({ from_name: '', from_email: '', subject: '', message: '' });
       setTimeout(() => setStatus('idle'), 5000);
@@ -93,7 +139,7 @@ const Contact: React.FC = () => {
         </h2>
 
         <div className="contact__grid">
-          {/* Links */}
+          {/* Links de contacto */}
           <div>
             <p className="contact__desc">
               Estoy disponible para proyectos freelance, colaboraciones y oportunidades laborales.
@@ -118,56 +164,95 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          {/* Formulario */}
-          <form className="contact-form" onSubmit={handleSubmit}>
+          {/* Formulario seguro */}
+          <form className="contact-form" onSubmit={handleSubmit} noValidate>
+
+            {/* ── Honeypot: campo invisible para bots ── */}
+            <input
+              ref={honeypotRef}
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              style={{ display: 'none' }}
+            />
+
             <div className="contact-form__row">
-              <input
-                type="text"
-                name="from_name"
-                placeholder="Tu nombre"
-                value={form.from_name}
-                onChange={handleChange}
-                required
-              />
-              <input
-                type="email"
-                name="from_email"
-                placeholder="Tu email"
-                value={form.from_email}
-                onChange={handleChange}
-                required
-              />
+              <div className="contact-form__field">
+                <input
+                  type="text"
+                  name="from_name"
+                  placeholder="Tu nombre *"
+                  value={form.from_name}
+                  onChange={handleChange}
+                  maxLength={80}
+                  className={errors.from_name ? 'input--error' : ''}
+                />
+                {errors.from_name && <span className="contact-form__error">{errors.from_name}</span>}
+              </div>
+              <div className="contact-form__field">
+                <input
+                  type="email"
+                  name="from_email"
+                  placeholder="Tu email *"
+                  value={form.from_email}
+                  onChange={handleChange}
+                  className={errors.from_email ? 'input--error' : ''}
+                />
+                {errors.from_email && <span className="contact-form__error">{errors.from_email}</span>}
+              </div>
             </div>
 
-            <input
-              type="text"
-              name="subject"
-              placeholder="Asunto"
-              value={form.subject}
-              onChange={handleChange}
-            />
+            <div className="contact-form__field">
+              <input
+                type="text"
+                name="subject"
+                placeholder="Asunto"
+                value={form.subject}
+                onChange={handleChange}
+                maxLength={120}
+                className={errors.subject ? 'input--error' : ''}
+              />
+              {errors.subject && <span className="contact-form__error">{errors.subject}</span>}
+            </div>
 
-            <textarea
-              name="message"
-              placeholder="Cuéntame sobre tu proyecto..."
-              value={form.message}
-              onChange={handleChange}
-              required
-            />
+            <div className="contact-form__field">
+              <textarea
+                name="message"
+                placeholder="Cuéntame sobre tu proyecto... *"
+                value={form.message}
+                onChange={handleChange}
+                maxLength={2000}
+                className={errors.message ? 'input--error' : ''}
+              />
+              {/* Contador de caracteres */}
+              <div className="contact-form__char-count">
+                {form.message.length}/2000
+              </div>
+              {errors.message && <span className="contact-form__error">{errors.message}</span>}
+            </div>
+
+            {/* Mensaje rate limited */}
+            {status === 'rate_limited' && (
+              <div className="contact-form__alert contact-form__alert--warn">
+                ⚠️ Has enviado demasiados mensajes. Espera {minutesLeft} min antes de intentar de nuevo.
+              </div>
+            )}
 
             {/* Botón con estados */}
             <button
               type="submit"
               className="btn btn--white contact-form__btn"
-              disabled={status === 'sending'}
+              disabled={status === 'sending' || status === 'rate_limited'}
             >
-              {status === 'idle' && (<>Enviar mensaje <SendIcon /></>)}
-              {status === 'sending' && (
-                <><span className="contact-form__spinner" /> Enviando...</>
-              )}
-              {status === 'success' && <>✓ Mensaje enviado con éxito</>}
-              {status === 'error' && <>✕ Error al enviar. Intenta de nuevo</>}
+              {status === 'idle'         && (<>Enviar mensaje <SendIcon /></>)}
+              {status === 'sending'      && (<><span className="contact-form__spinner" /> Enviando...</>)}
+              {status === 'success'      && <>✓ Mensaje enviado con éxito</>}
+              {status === 'error'        && <>✕ Error al enviar. Intenta de nuevo</>}
+              {status === 'rate_limited' && <>⚠️ Límite alcanzado</>}
             </button>
+
           </form>
         </div>
       </div>
