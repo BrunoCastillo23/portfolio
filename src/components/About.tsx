@@ -26,19 +26,9 @@ const About: React.FC = () => {
           Apasionado por el <strong>desarrollo web</strong>
         </h2>
 
-        {/* Stats en fila completa — 4 columnas ANTES del grid */}
-        <div className="about__stats-row">
-          {stats.map((s) => (
-            <div key={s.label} className="stat-card">
-              <div className="stat-card__num">
-                {s.num}{s.sup && <sup>{s.sup}</sup>}
-              </div>
-              <div className="stat-card__label">{s.label}</div>
-            </div>
-          ))}
-        </div>
-
         <div className="about__grid">
+
+          {/* Columna izquierda: texto + stats pegados debajo del texto */}
           <div className="about__content">
             <p className="about__text">
               Soy un desarrollador Full Stack de Lima, Perú, con pasión por construir
@@ -54,8 +44,21 @@ const About: React.FC = () => {
               desarrolladores y siempre estoy explorando nuevas herramientas y frameworks
               para seguir creciendo como profesional.
             </p>
+
+            {/* Stats en 2×2 debajo del texto — sin espacio vacío */}
+            <div className="about__stats-inline">
+              {stats.map((s) => (
+                <div key={s.label} className="stat-card">
+                  <div className="stat-card__num">
+                    {s.num}{s.sup && <sup>{s.sup}</sup>}
+                  </div>
+                  <div className="stat-card__label">{s.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
 
+          {/* Columna derecha: carrusel */}
           <div className="about__carousel">
             <div className="carousel__img-wrap">
               <img
@@ -75,6 +78,7 @@ const About: React.FC = () => {
               ))}
             </div>
           </div>
+
         </div>
       </div>
     </section>

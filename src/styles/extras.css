@@ -29,26 +29,40 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   ABOUT — Stats en fila completa de 4 columnas
+   ABOUT — Stats en 2x2 dentro de la columna izquierda
+   pegados justo debajo del texto, sin hueco
 ══════════════════════════════════════════════════════ */
-.about__stats-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  margin-top: 40px;
-  margin-bottom: 48px;
-}
-.about__stats-row .stat-card {
-  text-align: center;
-  padding: 24px 16px;
-}
-.about__stats-row .stat-card__num {
-  font-size: 36px;
-  justify-content: center;
+
+/* Grid del about: columna izquierda ocupa el espacio del texto + stats */
+.about__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* texto arriba, stats abajo */
 }
 
-/* Quita el about__stats viejo del grid — ahora está arriba */
-.about__content .about__stats { display: none; }
+/* Stats 2×2 dentro de la columna izquierda */
+.about__stats-inline {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 24px; /* separación pequeña del texto */
+}
+.about__stats-inline .stat-card {
+  padding: 20px 16px;
+  text-align: center;
+}
+.about__stats-inline .stat-card__num {
+  font-size: 32px;
+  display: block;
+  text-align: center;
+}
+.about__stats-inline .stat-card__label {
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* Quita el about__stats-row si quedó del intento anterior */
+.about__stats-row { display: none; }
 
 /* ══════════════════════════════════════════════════════
    SKILLS — Iconos SVG
@@ -121,12 +135,12 @@
   padding: 1px 5px; border-radius: 3px;
 }
 
-/* ── Responsive stats row ── */
+/* ── Responsive ── */
 @media (max-width: 768px) {
-  .about__stats-row { grid-template-columns: repeat(2, 1fr); }
+  .about__stats-inline { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 480px) {
-  .about__stats-row { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .about__stats-row .stat-card { padding: 18px 12px; }
-  .about__stats-row .stat-card__num { font-size: 28px; }
+  .about__stats-inline { gap: 10px; }
+  .about__stats-inline .stat-card { padding: 16px 12px; }
+  .about__stats-inline .stat-card__num { font-size: 26px; }
 }
