@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-// Responsable.webp sale del carrusel — va en Experiencia
 import foto2       from '../assets/fotos/Perfil_02.webp';
 import foto3       from '../assets/fotos/Perfil_03.webp';
 import foto4       from '../assets/fotos/Perfil_04.webp';
@@ -27,6 +26,18 @@ const About: React.FC = () => {
           Apasionado por el <strong>desarrollo web</strong>
         </h2>
 
+        {/* Stats en fila completa — 4 columnas ANTES del grid */}
+        <div className="about__stats-row">
+          {stats.map((s) => (
+            <div key={s.label} className="stat-card">
+              <div className="stat-card__num">
+                {s.num}{s.sup && <sup>{s.sup}</sup>}
+              </div>
+              <div className="stat-card__label">{s.label}</div>
+            </div>
+          ))}
+        </div>
+
         <div className="about__grid">
           <div className="about__content">
             <p className="about__text">
@@ -43,16 +54,6 @@ const About: React.FC = () => {
               desarrolladores y siempre estoy explorando nuevas herramientas y frameworks
               para seguir creciendo como profesional.
             </p>
-            <div className="about__stats">
-              {stats.map((s) => (
-                <div key={s.label} className="stat-card">
-                  <div className="stat-card__num">
-                    {s.num}{s.sup && <sup>{s.sup}</sup>}
-                  </div>
-                  <div className="stat-card__label">{s.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
 
           <div className="about__carousel">

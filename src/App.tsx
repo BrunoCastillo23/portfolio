@@ -1,13 +1,12 @@
 import React from 'react';
-import Navbar         from './components/Navbar';
-import Hero           from './components/Hero';
-import About          from './components/About';
-import Experience     from './components/Experience';
-import Skills         from './components/Skills';
-import Projects       from './components/Projects';
-import GitHubActivity from './components/GitHubActivity';
-import Testimonials   from './components/Testimonials';
-import Contact        from './components/Contact';
+import Navbar       from './components/Navbar';
+import Hero         from './components/Hero';
+import About        from './components/About';
+import Experience   from './components/Experience';
+import Skills       from './components/Skills';
+import Projects     from './components/Projects';
+import Testimonials from './components/Testimonials';
+import Contact      from './components/Contact';
 import './styles/index.css';
 
 const App: React.FC = () => (
@@ -19,7 +18,6 @@ const App: React.FC = () => (
       <Experience />
       <Skills />
       <Projects />
-      <GitHubActivity />
       <Testimonials />
       <Contact />
     </main>

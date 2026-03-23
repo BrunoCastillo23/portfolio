@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
 const navItems = [
-  { label: 'Sobre mí',    href: '#sobre'       },
-  { label: 'Experiencia', href: '#experiencia'  },
-  { label: 'Skills',      href: '#habilidades'  },
-  { label: 'Proyectos',   href: '#proyectos'    },
-  { label: 'GitHub',      href: '#github'       },
+  { label: 'Sobre mí',    href: '#sobre'      },
+  { label: 'Experiencia', href: '#experiencia' },
+  { label: 'Skills',      href: '#habilidades' },
+  { label: 'Proyectos',   href: '#proyectos'   },
 ];
 
 const Navbar: React.FC = () => {
