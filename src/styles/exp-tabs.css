@@ -1,0 +1,46 @@
+
+/* ══════════════════════════════════════════════════════
+   EXPERIENCE — Tabs de roles (Colaborador / Responsable)
+══════════════════════════════════════════════════════ */
+.exp-roles-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.exp-role-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s, background 0.2s;
+  flex: 1;
+  min-width: 160px;
+}
+.exp-role-tab:hover {
+  border-color: var(--border);
+  background: var(--bg);
+}
+.exp-role-tab--active {
+  border-color: var(--accent) !important;
+  background: var(--tag-bg) !important;
+}
+.exp-role-tab__title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg);
+}
+.exp-role-tab--active .exp-role-tab__title { color: var(--accent); }
+.exp-role-tab__period {
+  font-size: 10px;
+  font-family: var(--mono);
+  color: var(--fg3);
+  letter-spacing: 0.03em;
+}
+.exp-role-tab--active .exp-role-tab__period { color: var(--accent); opacity: 0.7; }
