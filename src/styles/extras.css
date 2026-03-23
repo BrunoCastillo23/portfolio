@@ -29,15 +29,12 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   ABOUT — Stats 4 columnas × 1 fila dentro del hueco
-   de la columna izquierda, pegados al texto
+   ABOUT — Stats 4×1 dentro de la columna izquierda
 ══════════════════════════════════════════════════════ */
 .about__content {
   display: flex;
   flex-direction: column;
 }
-
-/* 4 columnas × 1 fila — ocupa todo el ancho de la columna izquierda */
 .about__stats-inline {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -59,23 +56,67 @@
   margin-top: 4px;
   line-height: 1.4;
 }
-
-/* Oculta variantes anteriores */
 .about__stats-row { display: none; }
 
 /* ══════════════════════════════════════════════════════
-   SKILLS — Iconos SVG
+   SKILLS — Devicon
 ══════════════════════════════════════════════════════ */
 .skill-card__icon {
-  display: flex;
-  align-items: center;
+  width: 48px; height: 48px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.skill-card:hover .skill-card__icon {
+  background: rgba(255,255,255,0.08);
+  border-color: var(--border);
+}
+.skill-card__icon i { font-size: 28px !important; line-height: 1; }
+
+/* ══════════════════════════════════════════════════════
+   CONTACT — Formulario con EmailJS
+══════════════════════════════════════════════════════ */
+
+/* Botón con estados */
+.contact-form__btn {
+  align-self: flex-start;
+  min-width: 200px;
   justify-content: center;
+  transition: all 0.2s;
 }
-.skill-card__icon svg {
-  width: 26px;
-  height: 26px;
-  display: block;
+.contact-form__btn:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  transform: none !important;
 }
+
+/* Estado success */
+.contact-form__btn.success,
+.contact-form__btn[data-status="success"] {
+  background: #16a34a !important;
+  box-shadow: 0 0 20px rgba(22,163,74,0.3) !important;
+}
+
+/* Estado error */
+.contact-form__btn.error {
+  background: #dc2626 !important;
+  box-shadow: 0 0 20px rgba(220,38,38,0.3) !important;
+}
+
+/* Spinner de carga */
+.contact-form__spinner {
+  display: inline-block;
+  width: 14px; height: 14px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin-form 0.7s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes spin-form { to { transform: rotate(360deg); } }
 
 /* ══════════════════════════════════════════════════════
    TESTIMONIALS
@@ -136,11 +177,11 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  /* En móvil la columna izquierda es más angosta → 2×2 */
   .about__stats-inline { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 480px) {
   .about__stats-inline { gap: 8px; }
   .about__stats-inline .stat-card { padding: 14px 8px; }
   .about__stats-inline .stat-card__num { font-size: 22px; }
+  .contact-form__btn { width: 100%; }
 }
