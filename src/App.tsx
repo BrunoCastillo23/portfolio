@@ -7,10 +7,14 @@ import Skills       from './components/Skills';
 import Projects     from './components/Projects';
 import Testimonials from './components/Testimonials';
 import Contact      from './components/Contact';
+import CustomCursor from './components/CustomCursor';
 import './styles/index.css';
 
 const App: React.FC = () => (
   <>
+    {/* Cursor dinámico — solo desktop */}
+    <CustomCursor />
+
     <Navbar />
     <main>
       <Hero />

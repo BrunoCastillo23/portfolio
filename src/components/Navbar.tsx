@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
-
-const navItems = [
-  { label: 'Sobre mí',    href: '#sobre'      },
-  { label: 'Experiencia', href: '#experiencia' },
-  { label: 'Skills',      href: '#habilidades' },
-  { label: 'Proyectos',   href: '#proyectos'   },
-];
+import ThemeToggle from './ThemeToggle';
+import { useLang } from '../context/LangContext';
 
 const Navbar: React.FC = () => {
+  const { lang, t, toggle: toggleLang } = useLang();
   const [active,   setActive]   = useState('');
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const navItems = [
+    { label: t.nav.about,      href: '#sobre'      },
+    { label: t.nav.experience, href: '#experiencia' },
+    { label: t.nav.skills,     href: '#habilidades' },
+    { label: t.nav.projects,   href: '#proyectos'   },
+  ];
 
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]');
@@ -33,15 +36,26 @@ const Navbar: React.FC = () => {
 
   const closeMenu = () => setMenuOpen(false);
 
+  const LangBtn = () => (
+    <button className="lang-toggle" onClick={toggleLang} title="Cambiar idioma">
+      <span className={lang === 'es' ? 'lang-toggle__opt lang-toggle__opt--active' : 'lang-toggle__opt'}>ES</span>
+      <span className="lang-toggle__sep">|</span>
+      <span className={lang === 'en' ? 'lang-toggle__opt lang-toggle__opt--active' : 'lang-toggle__opt'}>EN</span>
+    </button>
+  );
+
   return (
     <>
       <nav className={`nav${scrolled ? ' nav--scrolled' : ''}`}>
         <div className="nav__inner">
+
+          {/* ── Izquierda: Logo ── */}
           <a href="#hero" className="nav__logo" onClick={closeMenu}>
             bruno<span>.</span>dev
           </a>
 
-          <ul className="nav__links">
+          {/* ── Centro: Links de navegación (solo desktop) ── */}
+          <ul className="nav__links nav__links--center">
             {navItems.map((item) => (
               <li key={item.href}>
                 <a
@@ -53,17 +67,22 @@ const Navbar: React.FC = () => {
                 </a>
               </li>
             ))}
-            <li>
-              <a href="#contacto" className="nav__cta">
-                Contactar
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <line x1="5" y1="12" x2="19" y2="12"/>
-                  <polyline points="12 5 19 12 12 19"/>
-                </svg>
-              </a>
-            </li>
           </ul>
 
+          {/* ── Derecha: ES|EN + Tema + Contactar (solo desktop) ── */}
+          <div className="nav__right">
+            <LangBtn />
+            <ThemeToggle />
+            <a href="#contacto" className="nav__cta">
+              {t.nav.contact}
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </a>
+          </div>
+
+          {/* ── Móvil: solo hamburger ── */}
           <button
             className={`nav__hamburger${menuOpen ? ' open' : ''}`}
             onClick={() => setMenuOpen((v) => !v)}
@@ -71,9 +90,11 @@ const Navbar: React.FC = () => {
           >
             <span /><span /><span />
           </button>
+
         </div>
       </nav>
 
+      {/* ── Menú móvil desplegable ── */}
       <div className={`nav__mobile-menu${menuOpen ? ' open' : ''}`}>
         {navItems.map((item) => (
           <a
@@ -85,8 +106,13 @@ const Navbar: React.FC = () => {
             {item.label}
           </a>
         ))}
+        {/* Fila de acciones en móvil */}
+        <div className="nav__mobile-actions">
+          <LangBtn />
+          <ThemeToggle />
+        </div>
         <a href="#contacto" className="nav__mobile-cta" onClick={closeMenu}>
-          Contactar
+          {t.nav.contact}
         </a>
       </div>
     </>
