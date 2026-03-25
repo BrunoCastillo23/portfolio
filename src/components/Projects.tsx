@@ -6,6 +6,7 @@ import logoCV            from '../assets/marcas/ConsigueVentas.svg';
 import logoTicorp        from '../assets/marcas/Ticorp.svg';
 import logoKare          from '../assets/marcas/Kare.svg';
 import logoPVElectronica from '../assets/marcas/PVElectronica.svg';
+import logoSergenind     from '../assets/marcas/Sergenind.svg';
 
 const logoMap: Record<string, string> = {
   'effetha.com':                      logoEffetha,
@@ -13,6 +14,7 @@ const logoMap: Record<string, string> = {
   'ticorperu.net':                    logoTicorp,
   'karesaludrenal.com':               logoKare,
   'pvelectronica.consigueventas.com': logoPVElectronica,
+  'sergenind.com':                    logoSergenind,
 };
 
 const ExternalIcon: React.FC = () => (
@@ -42,7 +44,6 @@ const Projects: React.FC = () => (
             rel="noopener noreferrer"
             className="proj-card"
           >
-            {/* Preview — logo perfectamente centrado */}
             <div className="proj-card__preview">
               <div className="proj-card__browser-bar">
                 <div className="dot dot--r" />
@@ -55,7 +56,6 @@ const Projects: React.FC = () => (
               </div>
             </div>
 
-            {/* Información */}
             <div className="proj-card__body">
               <div className="proj-card__name">{proj.name}</div>
               <div className="proj-card__company">{proj.company}</div>

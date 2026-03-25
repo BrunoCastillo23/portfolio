@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
-import logoCV      from '../assets/marcas/ConsigueVentas.svg';
-import logoEffetha from '../assets/marcas/Effetha.svg';
-import logoKare    from '../assets/marcas/Kare.svg';
-import logoPV      from '../assets/marcas/PVElectronica.svg';
-import logoTicorp  from '../assets/marcas/Ticorp.svg';
-import fotoRol     from '../assets/fotos/Responsable.webp';
+import logoCV       from '../assets/marcas/ConsigueVentas.svg';
+import logoEffetha  from '../assets/marcas/Effetha.svg';
+import logoKare     from '../assets/marcas/Kare.svg';
+import logoPV       from '../assets/marcas/PVElectronica.svg';
+import logoTicorp   from '../assets/marcas/Ticorp.svg';
+import logoSerg     from '../assets/marcas/Sergenind.svg';
+import fotoRol      from '../assets/fotos/Responsable.webp';
 
 interface Role {
   title: string;
@@ -73,6 +74,7 @@ const experiences: ExperienceItem[] = [
       { name: 'Kare Salud',     logo: logoKare    },
       { name: 'PV Electrónica', logo: logoPV      },
       { name: 'Ticor Perú',     logo: logoTicorp  },
+      { name: 'Sergenind',      logo: logoSerg    },
     ],
   },
 ];
@@ -121,13 +123,10 @@ const Experience: React.FC = () => {
               {/* ── Body ── */}
               {openCard === i && (
                 <div className="exp-card__body">
-                  {/* Grid: izquierda (tabs + contenido) | derecha (foto + marcas) */}
                   <div className="exp-card__body-grid">
 
                     {/* ── Columna izquierda ── */}
                     <div className="exp-card__body-left">
-
-                      {/* Tabs de roles */}
                       <div className="exp-roles-tabs">
                         {exp.roles.map((role, ri) => (
                           <button
@@ -159,10 +158,9 @@ const Experience: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* ── Columna derecha: foto + marcas debajo ── */}
+                    {/* ── Columna derecha: foto + marcas ── */}
                     {exp.rolePhoto && (
                       <div className="exp-card__body-right">
-                        {/* Foto del cargo */}
                         <div className="exp-role-photo-wrap">
                           <img
                             src={exp.rolePhoto}
@@ -175,7 +173,6 @@ const Experience: React.FC = () => {
                           </div>
                         </div>
 
-                        {/* Marcas debajo de la foto */}
                         {exp.brands && (
                           <div className="exp-brands-below">
                             <div className="exp-card__brands-label">Marcas gestionadas</div>

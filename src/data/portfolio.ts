@@ -79,6 +79,15 @@ export const projects: Project[] = [
     desc: 'Tienda electrónica con catálogo de productos, filtros y gestión de pedidos integrada.',
     tags: ['E-commerce', 'CSS', 'UX', 'Catálogo'],
   },
+  {
+    name: 'Sergenind',
+    company: 'Consigue Ventas',
+    url: 'sergenind.com',
+    href: 'https://sergenind.com',
+    bg: '#0d1520',
+    desc: 'Empresa de mantenimiento industrial. Sitio con servicios, portafolio y captación de clientes.',
+    tags: ['WordPress', 'CSS', 'SEO', 'Mantenimiento'],
+  },
 ];
 
 export const contactLinks: ContactLink[] = [
