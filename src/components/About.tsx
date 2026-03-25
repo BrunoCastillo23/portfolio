@@ -1,18 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLang } from '../context/LangContext';
 
-import foto2       from '../assets/fotos/Perfil_02.webp';
-import foto3       from '../assets/fotos/Perfil_03.webp';
 import foto4       from '../assets/fotos/Perfil_04.webp';
 import fotoDevFest from '../assets/fotos/DevFest.webp';
 import fotoGrupo   from '../assets/fotos/Grupo.webp';
 
-const fotos = [foto2, foto3, foto4, fotoDevFest, fotoGrupo];
-const fotoLabels = ['Foto personal','Foto personal','Foto personal','DevFest Lima 2025','Grupo de estudio'];
+// Solo 3 fotos: Perfil_04, DevFest, Grupo
+const fotos = [foto4, fotoDevFest, fotoGrupo];
+const fotoLabels = ['Foto personal', 'DevFest Lima 2025', 'Grupo de estudio'];
+
+const AUTOPLAY_MS = 5000; // cambia cada 5 segundos
 
 const About: React.FC = () => {
   const { t } = useLang();
   const [current, setCurrent] = useState(0);
+
+  // Carrusel automático cada 5 segundos
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % fotos.length);
+    }, AUTOPLAY_MS);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section id="sobre" className="section about">

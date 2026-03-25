@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import fotoPerfil from '../assets/fotos/Perfil_04.webp';
+import fotoPerfil from '../assets/fotos/Perfil_01.webp';
 import { useLang } from '../context/LangContext';
 
 const DownloadIcon = () => (
@@ -19,18 +19,13 @@ const Hero: React.FC = () => {
   const [deleting,  setDeleting]  = useState(false);
   const [charIdx,   setCharIdx]   = useState(0);
 
-  // Reset cuando cambia el idioma
   useEffect(() => {
-    setRoleIdx(0);
-    setCharIdx(0);
-    setDeleting(false);
-    setDisplayed('');
+    setRoleIdx(0); setCharIdx(0); setDeleting(false); setDisplayed('');
   }, [roles[0]]);
 
   useEffect(() => {
     const current = roles[roleIdx];
     let timeout: ReturnType<typeof setTimeout>;
-
     if (!deleting && charIdx < current.length) {
       timeout = setTimeout(() => { setDisplayed(current.slice(0, charIdx + 1)); setCharIdx(c => c + 1); }, 65);
     } else if (!deleting && charIdx === current.length) {
@@ -38,8 +33,7 @@ const Hero: React.FC = () => {
     } else if (deleting && charIdx > 0) {
       timeout = setTimeout(() => { setDisplayed(current.slice(0, charIdx - 1)); setCharIdx(c => c - 1); }, 35);
     } else if (deleting && charIdx === 0) {
-      setDeleting(false);
-      setRoleIdx(r => (r + 1) % roles.length);
+      setDeleting(false); setRoleIdx(r => (r + 1) % roles.length);
     }
     return () => clearTimeout(timeout);
   }, [charIdx, deleting, roleIdx, roles]);
@@ -69,6 +63,8 @@ const Hero: React.FC = () => {
             </a>
           </div>
         </div>
+
+        {/* Foto más grande — Perfil_01 */}
         <div className="hero__photo-wrap">
           <div className="hero__photo-ring" />
           <img src={fotoPerfil} alt="Bruno Castillo – Full Stack Developer" className="hero__photo" />

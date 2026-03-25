@@ -78,26 +78,22 @@ const experiences: ExperienceItem[] = [
 ];
 
 const Experience: React.FC = () => {
-  const [openCard,  setOpenCard]  = useState<number | null>(0);
+  const [openCard,   setOpenCard]   = useState<number | null>(0);
   const [activeRole, setActiveRole] = useState<number>(0);
 
   return (
     <section id="experiencia" className="section experience">
       <div className="wrap">
         <div className="sec-label">Trayectoria</div>
-        <h2 className="sec-title">
-          Experiencia <strong>laboral</strong>
-        </h2>
+        <h2 className="sec-title">Experiencia <strong>laboral</strong></h2>
         <p className="experience__sub">
           Mi recorrido profesional construyendo y liderando proyectos web reales.
         </p>
 
         <div className="exp-list">
           {experiences.map((exp, i) => (
-            <div
-              key={i}
-              className={`exp-card${openCard === i ? ' exp-card--open' : ''}`}
-            >
+            <div key={i} className={`exp-card${openCard === i ? ' exp-card--open' : ''}`}>
+
               {/* ── Header ── */}
               <button
                 className="exp-card__header"
@@ -107,7 +103,6 @@ const Experience: React.FC = () => {
                   <img src={exp.logo} alt={exp.company} className="exp-card__logo" />
                 </div>
                 <div className="exp-card__meta">
-                  {/* Muestra el rol activo en el header */}
                   <div className="exp-card__role">{exp.roles[activeRole].title}</div>
                   <div className="exp-card__company">{exp.company}</div>
                   <div className="exp-card__info">
@@ -126,9 +121,10 @@ const Experience: React.FC = () => {
               {/* ── Body ── */}
               {openCard === i && (
                 <div className="exp-card__body">
+                  {/* Grid: izquierda (tabs + contenido) | derecha (foto + marcas) */}
                   <div className="exp-card__body-grid">
 
-                    {/* Columna izquierda */}
+                    {/* ── Columna izquierda ── */}
                     <div className="exp-card__body-left">
 
                       {/* Tabs de roles */}
@@ -145,7 +141,6 @@ const Experience: React.FC = () => {
                         ))}
                       </div>
 
-                      {/* Contenido del rol activo */}
                       <p className="exp-card__desc">{exp.roles[activeRole].desc}</p>
 
                       <div className="exp-card__achievements">
@@ -158,31 +153,16 @@ const Experience: React.FC = () => {
                       </div>
 
                       <div className="tag-row">
-                        {exp.roles[activeRole].tags.map((t) => (
-                          <span key={t} className="tag">{t}</span>
+                        {exp.roles[activeRole].tags.map((tag) => (
+                          <span key={tag} className="tag">{tag}</span>
                         ))}
                       </div>
-
-                      {/* Marcas */}
-                      {exp.brands && (
-                        <>
-                          <div className="exp-card__brands-label" style={{ marginTop: '20px' }}>
-                            Marcas gestionadas
-                          </div>
-                          <div className="exp-card__brands">
-                            {exp.brands.map((b) => (
-                              <div key={b.name} className="exp-brand">
-                                <img src={b.logo} alt={b.name} />
-                              </div>
-                            ))}
-                          </div>
-                        </>
-                      )}
                     </div>
 
-                    {/* Columna derecha — foto del cargo */}
+                    {/* ── Columna derecha: foto + marcas debajo ── */}
                     {exp.rolePhoto && (
                       <div className="exp-card__body-right">
+                        {/* Foto del cargo */}
                         <div className="exp-role-photo-wrap">
                           <img
                             src={exp.rolePhoto}
@@ -194,6 +174,20 @@ const Experience: React.FC = () => {
                             <span>{exp.company}</span>
                           </div>
                         </div>
+
+                        {/* Marcas debajo de la foto */}
+                        {exp.brands && (
+                          <div className="exp-brands-below">
+                            <div className="exp-card__brands-label">Marcas gestionadas</div>
+                            <div className="exp-card__brands">
+                              {exp.brands.map((b) => (
+                                <div key={b.name} className="exp-brand">
+                                  <img src={b.logo} alt={b.name} />
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     )}
 
