@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLang } from '../context/LangContext';
 
 import fotoBrenda  from '../assets/reseñas/Brenda-Nicole-Tasayco-Saravia.webp';
 import fotomaria   from '../assets/reseñas/Maria-Trigoso-Losa.webp';
@@ -7,7 +8,7 @@ import fotoVictor  from '../assets/reseñas/Victor-Nontol-Nureña.webp';
 
 interface Testimonial {
   name: string;
-  role: string;
+  role: { es: string; en: string };
   company: string;
   period: string;
   linkedin: string;
@@ -19,7 +20,7 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     name: 'Brenda Nicole Tasayco Saravia',
-    role: 'Líder de Talento Humano',
+    role: { es: 'Líder de Talento Humano', en: 'Human Talent Leader' },
     company: 'Consigue Ventas',
     period: 'Mar 2025 – Mar 2026',
     linkedin: 'https://www.linkedin.com/in/brenda-nicole/',
@@ -29,9 +30,9 @@ const testimonials: Testimonial[] = [
   },
   {
     name: 'Maria Trigoso Loza',
-    role: 'Líder de Talento Humano',
+    role: { es: 'Líder de Talento Humano', en: 'Human Talent Leader' },
     company: 'Consigue Ventas',
-    period: 'Mar 2026 – Presente',
+    period: 'Mar 2026 – Present',
     linkedin: 'https://www.linkedin.com/in/maria-trigoso-loza-a22748265/',
     photo: fotomaria,
     pending: true,
@@ -39,9 +40,9 @@ const testimonials: Testimonial[] = [
   },
   {
     name: 'Martín Alonso Andrés Puertas Cuadros',
-    role: 'Líder de Tecnología',
+    role: { es: 'Líder de Tecnología', en: 'Technology Leader' },
     company: 'Consigue Ventas',
-    period: 'Ene 2025 – Presente',
+    period: 'Jan 2025 – Present',
     linkedin: 'https://www.linkedin.com/in/martin-alonso-andres-puertas-cuadros/',
     photo: fotoMartin,
     pending: true,
@@ -49,9 +50,9 @@ const testimonials: Testimonial[] = [
   },
   {
     name: 'Victor Jesus Nontol Nureña',
-    role: 'Co-responsable de Desarrollo Web',
+    role: { es: 'Co-responsable de Desarrollo Web', en: 'Co-Lead Web Development' },
     company: 'Consigue Ventas',
-    period: '17 Mar 2026 – Presente',
+    period: 'Mar 17, 2026 – Present',
     linkedin: 'https://www.linkedin.com/in/victor-jesus-nontol-nure%C3%B1a-8b4891367/',
     photo: fotoVictor,
     pending: true,
@@ -74,14 +75,17 @@ const LinkedInIcon = () => (
 );
 
 const Testimonials: React.FC = () => {
+  const { lang, t } = useLang();
   const [active, setActive] = useState(0);
+  const pendingText = lang === 'es' ? 'Reseña en progreso...' : 'Review in progress...';
+  const linkedinText = lang === 'es' ? 'Ver perfil en LinkedIn' : 'View LinkedIn profile';
 
   return (
     <section id="testimonios" className="section testimonials">
       <div className="wrap">
-        <div className="sec-label">Lo que dicen</div>
+        <div className="sec-label">{t.testimonials.label}</div>
         <h2 className="sec-title">
-          Personas que han <strong>trabajado conmigo</strong>
+          {t.testimonials.title} <strong>{t.testimonials.strong}</strong>
         </h2>
 
         <div className="testimonials__grid">
@@ -95,7 +99,7 @@ const Testimonials: React.FC = () => {
                 <img src={t.photo} alt={t.name} className="testi-card__photo" />
                 <div className="testi-card__info">
                   <div className="testi-card__name">{t.name}</div>
-                  <div className="testi-card__role">{t.role}</div>
+                  <div className="testi-card__role">{t.role[lang]}</div>
                   <div className="testi-card__company">{t.company}</div>
                   <span className="testi-card__period-badge">{t.period}</span>
                 </div>
@@ -108,7 +112,7 @@ const Testimonials: React.FC = () => {
               {t.pending ? (
                 <div className="testi-card__pending">
                   <span className="testi-card__pending-dot" />
-                  Reseña en progreso...
+                  {pendingText}
                 </div>
               ) : (
                 <p className="testi-card__text">{t.text}</p>
@@ -121,7 +125,7 @@ const Testimonials: React.FC = () => {
                 className="testi-card__linkedin"
                 onClick={(e) => e.stopPropagation()}
               >
-                <LinkedInIcon /> Ver perfil en LinkedIn
+                <LinkedInIcon /> {linkedinText}
               </a>
             </div>
           ))}
