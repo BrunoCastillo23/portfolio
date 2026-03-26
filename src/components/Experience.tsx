@@ -9,24 +9,6 @@ import logoTicorp   from '../assets/marcas/Ticorp.svg';
 import logoSerg     from '../assets/marcas/Sergenind.svg';
 import fotoRol      from '../assets/fotos/Responsable.webp';
 
-interface Role {
-  title: string;
-  period: string;
-  badge: string;
-  desc: string;
-  achievements: string[];
-  tags: string[];
-}
-
-interface ExperienceItem {
-  company: string;
-  logo: string;
-  rolePhoto?: string;
-  location: string;
-  roles: Role[];
-  brands?: { name: string; logo: string }[];
-}
-
 // Datos bilingües
 const expData = {
   es: {
