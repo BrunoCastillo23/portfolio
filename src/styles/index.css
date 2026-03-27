@@ -130,7 +130,7 @@ a { text-decoration: none; color: inherit; }
 .exp-card__chevron.rotated { transform: rotate(180deg); color: var(--accent); }
 .exp-card__body { padding: 20px 24px 24px; border-top: 1px solid var(--border2); }
 
-/* Grid desktop: izquierda + derecha */
+/* Grid desktop */
 .exp-card__body-grid { display: grid; grid-template-columns: 1fr 220px; gap: 28px; align-items: stretch; }
 .exp-card__body-left { display: flex; flex-direction: column; }
 .exp-card__desc { color: var(--fg2); font-size: 14px; line-height: 1.8; margin-bottom: 18px; }
@@ -145,9 +145,38 @@ a { text-decoration: none; color: inherit; }
 
 /* Columna derecha */
 .exp-card__body-right { display: flex; flex-direction: column; gap: 12px; }
-.exp-role-photo-wrap { width: 100%; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); display: flex; flex-direction: column; background: var(--bg3); }
-.exp-role-photo { width: 100%; aspect-ratio: 1/1; object-fit: cover; object-position: center center; display: block; }
-.exp-role-photo__label { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 10px; background: var(--bg3); border-top: 1px solid var(--border2); text-align: center; }
+
+.exp-role-photo-wrap {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  background: var(--bg3);
+}
+
+/* ── Imagen: contain + padding para que ambos círculos
+      se vean completos y con el mismo espacio alrededor ── */
+.exp-role-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;        /* muestra toda la imagen sin recortar */
+  object-position: center;
+  display: block;
+  padding: 12px;              /* espacio uniforme en los 4 lados */
+  box-sizing: border-box;
+  background: var(--bg3);
+}
+
+.exp-role-photo__label {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 2px;
+  padding: 8px 10px;
+  background: var(--bg3);
+  border-top: 1px solid var(--border2);
+  text-align: center;
+}
 .exp-role-photo__label span:first-child { font-size: 11px; font-weight: 600; color: #fff; }
 .exp-role-photo__label span:last-child  { font-size: 10px; color: var(--accent); }
 .exp-brands-below { background: var(--bg3); border: 1px solid var(--border2); border-radius: var(--radius); padding: 12px; flex: 1; }
@@ -220,13 +249,9 @@ a { text-decoration: none; color: inherit; }
 /* ══════════════════════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════════════════════ */
-
-/* 1200px */
 @media (max-width: 1200px) {
   .exp-card__body-grid { grid-template-columns: 1fr 200px; gap: 24px; }
 }
-
-/* 1024px — tablet landscape */
 @media (max-width: 1024px) {
   .hero__wrap { grid-template-columns: 1fr 300px; gap: 40px; }
   .hero__photo { width: 260px; height: 260px; }
@@ -235,8 +260,6 @@ a { text-decoration: none; color: inherit; }
   .projects__grid { grid-template-columns: repeat(2, 1fr); }
   .exp-card__body-grid { grid-template-columns: 1fr 180px; gap: 20px; }
 }
-
-/* 900px — tablet portrait: nav hamburger, exp a 1 columna */
 @media (max-width: 900px) {
   .nav__inner { grid-template-columns: 1fr auto; }
   .nav__links--center { display: none; }
@@ -245,24 +268,11 @@ a { text-decoration: none; color: inherit; }
   .hero__wrap { grid-template-columns: 1fr; }
   .hero__photo-wrap { display: none; }
   .hero__desc { max-width: 600px; }
-
-  /* Experiencia: columna derecha pasa abajo, pero ocupa todo el ancho */
-  .exp-card__body-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  /* Foto + marcas en horizontal cuando están abajo */
-  .exp-card__body-right {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 16px;
-    align-items: start;
-  }
+  .exp-card__body-grid { grid-template-columns: 1fr; gap: 20px; }
+  .exp-card__body-right { display: grid; grid-template-columns: 200px 1fr; gap: 16px; align-items: start; }
   .exp-role-photo-wrap { max-width: 200px; }
   .exp-brands-below { flex: none; }
 }
-
-/* 768px — móvil grande */
 @media (max-width: 768px) {
   :root { --nav-h: 58px; }
   .section { padding: 72px 0; }
@@ -272,32 +282,18 @@ a { text-decoration: none; color: inherit; }
   .exp-card__header { gap: 14px; padding: 16px 18px; }
   .exp-card__logo-wrap { width: 44px; height: 44px; }
   .exp-card__body { padding: 16px 18px 20px; }
-
-  /* Experiencia: vuelve a columna única, foto ocupa todo el ancho */
-  .exp-card__body-right {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .exp-role-photo-wrap {
-    max-width: 100%;
-    width: 100%;
-  }
-
+  .exp-card__body-right { display: flex; flex-direction: column; gap: 12px; }
+  .exp-role-photo-wrap { max-width: 100%; width: 100%; }
   .projects__grid { grid-template-columns: repeat(2, 1fr); }
   .contact__grid { grid-template-columns: 1fr; gap: 40px; }
   .contact-form__row { grid-template-columns: 1fr; }
   .skills__grid { grid-template-columns: repeat(3, 1fr); }
   .footer__inner { flex-direction: column; align-items: flex-start; gap: 10px; }
 }
-
-/* 600px — móvil medio */
 @media (max-width: 600px) {
   .projects__grid { grid-template-columns: 1fr; }
   .skills__grid { grid-template-columns: repeat(2, 1fr); }
 }
-
-/* 480px — móvil pequeño */
 @media (max-width: 480px) {
   :root { --nav-h: 54px; }
   .wrap, .nav__inner, .footer__inner { width: 92%; }
@@ -311,14 +307,11 @@ a { text-decoration: none; color: inherit; }
   .skill-card { padding: 16px 14px; }
   .exp-card__info { display: none; }
   .exp-badge--accent { display: inline-flex; }
-  /* Foto experiencia: ocupa todo el ancho en móvil pequeño */
   .exp-role-photo-wrap { max-width: 100%; width: 100%; }
   .proj-card__preview { height: 130px; }
   .contact__link-val { font-size: 12px; word-break: break-all; }
   .sec-title { font-size: clamp(22px, 7vw, 32px); }
 }
-
-/* 360px — móvil muy pequeño */
 @media (max-width: 360px) {
   .wrap, .nav__inner, .footer__inner { width: 94%; }
   .skills__grid { grid-template-columns: 1fr 1fr; }

@@ -7,7 +7,12 @@ import logoKare     from '../assets/marcas/Kare.svg';
 import logoPV       from '../assets/marcas/PVElectronica.svg';
 import logoTicorp   from '../assets/marcas/Ticorp.svg';
 import logoSerg     from '../assets/marcas/Sergenind.svg';
-import fotoRol      from '../assets/fotos/Responsable.webp';
+
+// ── Fotos por cargo ──────────────────────────────────
+import fotoResponsable from '../assets/fotos/Responsable.webp';
+import fotoColaborador from '../assets/fotos/Colaborador.webp';
+
+const roleFotos = [fotoResponsable, fotoColaborador];
 
 // Datos bilingües
 const expData = {
@@ -22,7 +27,7 @@ const expData = {
     roles: [
       {
         title: 'Responsable de Desarrollo Web',
-        period: '17 Nov 2025 – Presente',
+        period: '17 Nov 2025 – 27 Mar 2026',
         badge: 'Cargo actual',
         desc: 'Lidero el área de desarrollo web gestionando proyectos, personal y relaciones con clientes. Soy el punto de contacto entre el equipo técnico y los superiores.',
         achievements: [
@@ -64,7 +69,7 @@ const expData = {
     roles: [
       {
         title: 'Web Development Lead',
-        period: 'Nov 17, 2025 – Present',
+        period: 'Nov 17, 2025 – Mar 27, 2026',
         badge: 'Current role',
         desc: 'I lead the web development area managing projects, staff and client relationships. I am the point of contact between the technical team and management.',
         achievements: [
@@ -177,12 +182,16 @@ const Experience: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Derecha: foto + marcas */}
+                  {/* Derecha: foto cambia según cargo activo + marcas */}
                   <div className="exp-card__body-right">
                     <div className="exp-role-photo-wrap">
-                      <img src={fotoRol} alt={d.roles[0].title} className="exp-role-photo" />
+                      <img
+                        src={roleFotos[activeRole]}
+                        alt={d.roles[activeRole].title}
+                        className="exp-role-photo"
+                      />
                       <div className="exp-role-photo__label">
-                        <span>{d.roles[0].title}</span>
+                        <span>{d.roles[activeRole].title}</span>
                         <span>Consigue Ventas</span>
                       </div>
                     </div>

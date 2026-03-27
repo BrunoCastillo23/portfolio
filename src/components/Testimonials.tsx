@@ -12,7 +12,7 @@ interface Testimonial {
   company: string;
   period: string;
   linkedin: string;
-  text: string;
+  text: { es: string; en: string };
   photo: string;
   pending: boolean;
 }
@@ -25,38 +25,41 @@ const testimonials: Testimonial[] = [
     period: 'Mar 2025 – Mar 2026',
     linkedin: 'https://www.linkedin.com/in/brenda-nicole/',
     photo: fotoBrenda,
-    pending: true,
-    text: '',
+    pending: false,
+    text: {
+      es: 'Tuve el gusto de trabajar con él y puedo destacar su fuerte liderazgo, organización y enfoque en resultados. Su solidez técnica, comunicación efectiva y actitud proactiva facilitan el trabajo entre áreas y contribuyen directamente al éxito de los proyectos. Es confiable, comprometido y capaz de desempeñarse con excelencia en entornos exigentes. Lo recomiendo totalmente como un talento que aporta valor real y genera impacto positivo en cualquier organización.',
+      en: 'I had the pleasure of working with him and can highlight his strong leadership, organization and results-driven focus. His technical strength, effective communication and proactive attitude facilitate cross-team collaboration and directly contribute to project success. He is reliable, committed and capable of performing with excellence in demanding environments. I highly recommend him as a talent who adds real value and generates positive impact in any organization.',
+    },
   },
   {
     name: 'Maria Trigoso Loza',
     role: { es: 'Líder de Talento Humano', en: 'Human Talent Leader' },
     company: 'Consigue Ventas',
-    period: 'Mar 2026 – Present',
+    period: 'Mar 2026 – Presente',
     linkedin: 'https://www.linkedin.com/in/maria-trigoso-loza-a22748265/',
     photo: fotomaria,
     pending: true,
-    text: '',
+    text: { es: '', en: '' },
   },
   {
     name: 'Martín Alonso Andrés Puertas Cuadros',
     role: { es: 'Líder de Tecnología', en: 'Technology Leader' },
     company: 'Consigue Ventas',
-    period: 'Jan 2025 – Present',
+    period: 'Ene 2025 – Presente',
     linkedin: 'https://www.linkedin.com/in/martin-alonso-andres-puertas-cuadros/',
     photo: fotoMartin,
     pending: true,
-    text: '',
+    text: { es: '', en: '' },
   },
   {
     name: 'Victor Jesus Nontol Nureña',
     role: { es: 'Co-responsable de Desarrollo Web', en: 'Co-Lead Web Development' },
     company: 'Consigue Ventas',
-    period: 'Mar 17, 2026 – Present',
+    period: '17 Mar 2026 – Presente',
     linkedin: 'https://www.linkedin.com/in/victor-jesus-nontol-nure%C3%B1a-8b4891367/',
     photo: fotoVictor,
     pending: true,
-    text: '',
+    text: { es: '', en: '' },
   },
 ];
 
@@ -89,19 +92,19 @@ const Testimonials: React.FC = () => {
         </h2>
 
         <div className="testimonials__grid">
-          {testimonials.map((t, i) => (
+          {testimonials.map((item, i) => (
             <div
               key={i}
               className={`testi-card${i === active ? ' testi-card--active' : ''}`}
               onClick={() => setActive(i)}
             >
               <div className="testi-card__header-row">
-                <img src={t.photo} alt={t.name} className="testi-card__photo" />
+                <img src={item.photo} alt={item.name} className="testi-card__photo" />
                 <div className="testi-card__info">
-                  <div className="testi-card__name">{t.name}</div>
-                  <div className="testi-card__role">{t.role[lang]}</div>
-                  <div className="testi-card__company">{t.company}</div>
-                  <span className="testi-card__period-badge">{t.period}</span>
+                  <div className="testi-card__name">{item.name}</div>
+                  <div className="testi-card__role">{item.role[lang]}</div>
+                  <div className="testi-card__company">{item.company}</div>
+                  <span className="testi-card__period-badge">{item.period}</span>
                 </div>
               </div>
 
@@ -109,17 +112,17 @@ const Testimonials: React.FC = () => {
 
               <div className="testi-card__quote"><QuoteIcon /></div>
 
-              {t.pending ? (
+              {item.pending ? (
                 <div className="testi-card__pending">
                   <span className="testi-card__pending-dot" />
                   {pendingText}
                 </div>
               ) : (
-                <p className="testi-card__text">{t.text}</p>
+                <p className="testi-card__text">{item.text[lang]}</p>
               )}
 
               <a
-                href={t.linkedin}
+                href={item.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="testi-card__linkedin"
