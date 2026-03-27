@@ -3,7 +3,7 @@ import { useLang } from '../context/LangContext';
 
 import logoEffetha       from '../assets/marcas/Effetha.svg';
 import logoCV            from '../assets/marcas/ConsigueVentas.svg';
-import logoTicorp        from '../assets/marcas/Ticorp.svg';
+import logoTicorp        from '../assets/marcas/Ticorp.png';
 import logoKare          from '../assets/marcas/Kare.svg';
 import logoPVElectronica from '../assets/marcas/PVElectronica.svg';
 import logoSergenind     from '../assets/marcas/Sergenind.svg';
@@ -15,6 +15,11 @@ const logoMap: Record<string, string> = {
   'karesaludrenal.com':               logoKare,
   'pvelectronica.consigueventas.com': logoPVElectronica,
   'sergenind.com':                    logoSergenind,
+};
+
+// Tamaño extra para logos con mucho margen interno
+const logoStyleMap: Record<string, React.CSSProperties> = {
+  'ticorperu.net': { maxWidth: '85%', maxHeight: '76px' },
 };
 
 interface Project {
@@ -125,9 +130,15 @@ const Projects: React.FC = () => {
                   <span className="proj-card__url">{proj.url}</span>
                 </div>
                 <div className="proj-card__logo-wrap">
-                  <img src={logoMap[proj.url]} alt={`Logo ${proj.name}`} className="proj-card__logo-img" />
+                  <img
+                    src={logoMap[proj.url]}
+                    alt={`Logo ${proj.name}`}
+                    className="proj-card__logo-img"
+                    style={logoStyleMap[proj.url]}
+                  />
                 </div>
               </div>
+
               <div className="proj-card__body">
                 <div className="proj-card__name">{proj.name}</div>
                 <div className="proj-card__company">Consigue Ventas</div>

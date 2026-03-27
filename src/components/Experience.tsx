@@ -5,7 +5,7 @@ import logoCV       from '../assets/marcas/ConsigueVentas.svg';
 import logoEffetha  from '../assets/marcas/Effetha.svg';
 import logoKare     from '../assets/marcas/Kare.svg';
 import logoPV       from '../assets/marcas/PVElectronica.svg';
-import logoTicorp   from '../assets/marcas/Ticorp.svg';
+import logoTicorp   from '../assets/marcas/Ticorp.webp';
 import logoSerg     from '../assets/marcas/Sergenind.svg';
 
 // ── Fotos por cargo ──────────────────────────────────
@@ -106,8 +106,6 @@ const brands = [
   { name: 'Effetha',        logo: logoEffetha },
   { name: 'Kare Salud',     logo: logoKare    },
   { name: 'PV Electrónica', logo: logoPV      },
-  { name: 'Ticor Perú',     logo: logoTicorp  },
-  { name: 'Sergenind',      logo: logoSerg    },
 ];
 
 const Experience: React.FC = () => {
