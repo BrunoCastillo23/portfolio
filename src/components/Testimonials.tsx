@@ -38,8 +38,11 @@ const testimonials: Testimonial[] = [
     period: 'Mar 2026 – Presente',
     linkedin: 'https://www.linkedin.com/in/maria-trigoso-loza-a22748265/',
     photo: fotomaria,
-    pending: true,
-    text: { es: '', en: '' },
+    pending: false,
+    text: {
+      es: 'Me complace recomendar ampliamente a Bruno Castillo. Durante el tiempo que compartimos en el equipo, demostró ser un profesional altamente comprometido, responsable y orientado a resultados. Se destacó especialmente por su capacidad para desarrollar soluciones creativas e innovadoras en diseño web, manteniendo siempre un enfoque centrado en la experiencia del cliente y en los objetivos del negocio. Su dominio técnico, sumado a su atención al detalle, le permitió entregar proyectos de alta calidad, cumpliendo con los plazos establecidos y superando expectativas. Bruno es una persona con excelentes competencias interpersonales, trabaja muy bien en equipo y aporta ideas valiosas que enriquecen el trabajo del área. Sin duda, es un gran trabajador y un valioso aporte para cualquier organización.',
+      en: 'I am pleased to highly recommend Bruno Castillo. During the time we shared on the team, he proved to be a highly committed, responsible and results-oriented professional. He stood out especially for his ability to develop creative and innovative web design solutions, always maintaining a focus on client experience and business objectives. His technical expertise, combined with his attention to detail, allowed him to deliver high-quality projects, meeting deadlines and exceeding expectations. Bruno is a person with excellent interpersonal skills, works very well in a team and contributes valuable ideas that enrich the team\'s work. He is undoubtedly a great professional and a valuable asset to any organization.',
+    },
   },
   {
     name: 'Martín Alonso Andrés Puertas Cuadros',
@@ -53,13 +56,16 @@ const testimonials: Testimonial[] = [
   },
   {
     name: 'Victor Jesus Nontol Nureña',
-    role: { es: 'Co-responsable de Desarrollo Web', en: 'Co-Lead Web Development' },
+    role: { es: 'Responsable de Desarrollo Web', en: 'Web Development Lead' },
     company: 'Consigue Ventas',
-    period: '17 Mar 2026 – Presente',
+    period: '30 Mar 2026 – Presente',
     linkedin: 'https://www.linkedin.com/in/victor-jesus-nontol-nure%C3%B1a-8b4891367/',
     photo: fotoVictor,
-    pending: true,
-    text: { es: '', en: '' },
+    pending: false,
+    text: {
+      es: 'Bruno es un profesional comprometido y proactivo, con quien tuve la oportunidad de trabajar en el mismo equipo. Durante ese tiempo, demostró una gran capacidad para resolver problemas, adaptarse a nuevos retos y mantener una actitud positiva incluso bajo presión. Destaca por su responsabilidad, su disposición para colaborar y su enfoque en cumplir objetivos de manera eficiente. Además, tiene buenas habilidades técnicas como desarrollador web y siempre busca mejorar y aprender nuevas herramientas.',
+      en: 'Bruno is a committed and proactive professional with whom I had the opportunity to work on the same team. During that time, he demonstrated a great ability to solve problems, adapt to new challenges and maintain a positive attitude even under pressure. He stands out for his responsibility, his willingness to collaborate and his focus on achieving goals efficiently. Additionally, he has strong technical skills as a web developer and is always looking to improve and learn new tools.',
+    },
   },
 ];
 

@@ -144,7 +144,6 @@
 ══════════════════════════════════════════════════════ */
 .testimonials { background: var(--bg2); border-top: 1px solid var(--border2); }
 
-/* Exactamente 4 columnas — sin espacio vacío */
 .testimonials__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -213,8 +212,18 @@
 .testi-card__quote { color: var(--accent); opacity: 0.2; line-height: 1; }
 .testi-card--active .testi-card__quote { opacity: 0.45; }
 
-/* Texto */
-.testi-card__text { font-size: 13px; color: var(--fg2); line-height: 1.8; flex: 1; font-style: italic; }
+/* Texto reseña — justificado con separación de sílabas */
+.testi-card__text {
+  font-size: 13px;
+  color: var(--fg2);
+  line-height: 1.8;
+  flex: 1;
+  font-style: italic;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  overflow-wrap: break-word;
+}
 
 /* Pendiente */
 .testi-card__pending {
