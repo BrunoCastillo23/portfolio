@@ -51,8 +51,11 @@ const testimonials: Testimonial[] = [
     period: 'Ene 2025 – Presente',
     linkedin: 'https://www.linkedin.com/in/martin-alonso-andres-puertas-cuadros/',
     photo: fotoMartin,
-    pending: true,
-    text: { es: '', en: '' },
+    pending: false,
+    text: {
+      es: 'Es grato para mí recomendar a Bruno Castillo. Tengo la oportunidad de trabajar con él y estar a su supervisión dentro de la Agencia Consigue Ventas. Durante su labor como Responsable del Núcleo de Desarrollo Web, ha demostrado tener amplios conocimientos en el área, siempre aportando gran valor al equipo desde las capacidades técnicas que demuestra. Como encargado y líder del área, ha inspirado confianza en su equipo a cargo y los sabe guiar en medio de los proyectos. Ayuda y guía a sus compañeros desde las capacitaciones hasta su desenvolvimiento en proyectos y marcas reales. Siempre tiene una gran disposición y compromiso para poder cumplir las actividades y objetivos que se le proponen. Más allá de ser un gran profesional, también es una excelente persona y un buen amigo dentro y fuera del trabajo. Ha demostrado tener una gran calidad como persona, y siempre trata con respeto, amabilidad y empatía a cada persona que conoce. Sin duda alguna recomiendo a Bruno para quienes deseen contar con él en su equipo de trabajo.',
+      en: 'It is a pleasure for me to recommend Bruno Castillo. I have had the opportunity to work with him and be under his supervision at Consigue Ventas Agency. During his role as Web Development Team Lead, he has demonstrated broad knowledge in the field, always contributing great value to the team through his technical skills. As team lead, he has inspired confidence in his team and knows how to guide them through projects. He supports and guides his colleagues from onboarding to their development in real projects and brands. He always shows great dedication and commitment to fulfilling the tasks and goals set for him. Beyond being a great professional, he is also an excellent person and a good friend inside and outside of work. He has shown great character as a person, always treating everyone with respect, kindness and empathy. I wholeheartedly recommend Bruno to anyone who wants him on their team.',
+    },
   },
   {
     name: 'Victor Jesus Nontol Nureña',
@@ -86,7 +89,7 @@ const LinkedInIcon = () => (
 const Testimonials: React.FC = () => {
   const { lang, t } = useLang();
   const [active, setActive] = useState(0);
-  const pendingText = lang === 'es' ? 'Reseña en progreso...' : 'Review in progress...';
+  const pendingText  = lang === 'es' ? 'Reseña en progreso...' : 'Review in progress...';
   const linkedinText = lang === 'es' ? 'Ver perfil en LinkedIn' : 'View LinkedIn profile';
 
   return (
