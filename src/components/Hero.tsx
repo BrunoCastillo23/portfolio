@@ -42,6 +42,8 @@ const Hero: React.FC = () => {
     <section id="hero" className="hero">
       <div className="hero__bg-text" aria-hidden="true">BC</div>
       <div className="wrap hero__wrap">
+
+        {/* Texto */}
         <div className="hero__inner">
           <div className="hero__eyebrow">{t.hero.available}</div>
           <h1 className="hero__name">Bruno<br /><strong>Castillo</strong></h1>
@@ -64,11 +66,12 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* Foto más grande — Perfil_01 */}
+        {/* Foto — solo desktop (oculta en ≤900px) */}
         <div className="hero__photo-wrap">
           <div className="hero__photo-ring" />
           <img src={fotoPerfil} alt="Bruno Castillo – Full Stack Developer" className="hero__photo" />
         </div>
+
       </div>
     </section>
   );
