@@ -9,12 +9,12 @@ import logoPVElectronica from '../assets/marcas/PVElectronica.svg';
 import logoSergenind     from '../assets/marcas/Sergenind.svg';
 
 const logoMap: Record<string, string> = {
-  'effetha.com':                      logoEffetha,
-  'consigueventas.com':               logoCV,
-  'ticorperu.net':                    logoTicorp,
-  'karesaludrenal.com':               logoKare,
-  'pvelectronica.consigueventas.com': logoPVElectronica,
-  'sergenind.com':                    logoSergenind,
+  'effetha.com':          logoEffetha,
+  'consigueventas.com':   logoCV,
+  'ticorperu.net':        logoTicorp,
+  'karesaludrenal.com':   logoKare,
+  'pvelectronica.com.pe': logoPVElectronica,
+  'sergenind.com':        logoSergenind,
 };
 
 // Tamaño extra para logos con mucho margen interno
@@ -36,60 +36,60 @@ const projectsData: Project[] = [
     url: 'effetha.com',
     href: 'https://effetha.com',
     desc: {
-      es: 'Sitio corporativo con identidad de marca sólida y experiencia de usuario optimizada para conversión.',
-      en: 'Corporate site with strong brand identity and user experience optimized for conversion.',
+      es: 'Landing Page Horizontal realizada por la misma empresa Effetha. Desarrollada con WordPress, HTML5, CSS3, JavaScript y PHP.',
+      en: 'Horizontal Landing Page made by Effetha itself. Built with WordPress, HTML5, CSS3, JavaScript and PHP.',
     },
-    tags: ['WordPress', 'CSS', 'SEO', 'Branding'],
+    tags: ['WordPress', 'HTML5', 'CSS3', 'JavaScript', 'PHP'],
   },
   {
     name: 'Consigue Ventas',
     url: 'consigueventas.com',
     href: 'https://consigueventas.com',
     desc: {
-      es: 'Plataforma principal. Landing pages de alto rendimiento orientadas a conversión y ventas.',
-      en: 'Main platform. High-performance landing pages focused on conversion and sales.',
+      es: 'Multipage realizada por la misma empresa Consigue Ventas. Desarrollada con WordPress, HTML5, CSS3, JavaScript y PHP.',
+      en: 'Multipage site made by Consigue Ventas itself. Built with WordPress, HTML5, CSS3, JavaScript and PHP.',
     },
-    tags: ['HTML', 'CSS', 'JavaScript', 'Funnels'],
+    tags: ['WordPress', 'HTML5', 'CSS3', 'JavaScript', 'PHP'],
   },
   {
-    name: 'Ticor Perú',
+    name: 'Ticorp Perú',
     url: 'ticorperu.net',
     href: 'https://ticorperu.net',
     desc: {
-      es: 'Sitio institucional con presencia digital profesional y optimización SEO local.',
-      en: 'Institutional site with professional digital presence and local SEO optimization.',
+      es: 'Multipage realizada por Consigue Ventas. Desarrollada con WordPress, HTML5, CSS3, JavaScript y PHP.',
+      en: 'Multipage site made by Consigue Ventas. Built with WordPress, HTML5, CSS3, JavaScript and PHP.',
     },
-    tags: ['Web', 'Branding', 'SEO', 'Responsive'],
+    tags: ['WordPress', 'HTML5', 'CSS3', 'JavaScript', 'PHP'],
   },
   {
     name: 'Kare Salud Renal',
     url: 'karesaludrenal.com',
     href: 'https://karesaludrenal.com',
     desc: {
-      es: 'Sitio de salud con información clara. Formularios de captación y atención al paciente.',
-      en: 'Health site with clear information. Lead capture forms and patient care flow.',
+      es: 'Landing Page Vertical realizada por Consigue Ventas. Desarrollada con WordPress, HTML5, CSS3, JavaScript y PHP.',
+      en: 'Vertical Landing Page made by Consigue Ventas. Built with WordPress, HTML5, CSS3, JavaScript and PHP.',
     },
-    tags: ['HTML', 'CSS', 'Forms', 'UX'],
+    tags: ['WordPress', 'HTML5', 'CSS3', 'JavaScript', 'PHP'],
   },
   {
     name: 'PV Electrónica',
-    url: 'pvelectronica.consigueventas.com',
-    href: 'https://pvelectronica.consigueventas.com',
+    url: 'pvelectronica.com.pe',
+    href: 'https://pvelectronica.com.pe/',
     desc: {
-      es: 'Tienda electrónica con catálogo de productos, filtros y gestión de pedidos integrada.',
-      en: 'Electronics store with product catalog, filters and integrated order management.',
+      es: 'Multipage realizada por Consigue Ventas. Desarrollada con WordPress, HTML5, CSS3, JavaScript y PHP.',
+      en: 'Multipage site made by Consigue Ventas. Built with WordPress, HTML5, CSS3, JavaScript and PHP.',
     },
-    tags: ['E-commerce', 'CSS', 'UX', 'Catalog'],
+    tags: ['WordPress', 'HTML5', 'CSS3', 'JavaScript', 'PHP'],
   },
   {
     name: 'Sergenind',
     url: 'sergenind.com',
     href: 'https://sergenind.com',
     desc: {
-      es: 'Empresa de mantenimiento industrial. Sitio con servicios, portafolio y captación de clientes.',
-      en: 'Industrial maintenance company. Site with services, portfolio and client acquisition.',
+      es: 'Multipage realizada por Consigue Ventas. Desarrollada con WordPress, HTML5, CSS3, JavaScript y PHP.',
+      en: 'Multipage site made by Consigue Ventas. Built with WordPress, HTML5, CSS3, JavaScript and PHP.',
     },
-    tags: ['WordPress', 'CSS', 'SEO', 'Maintenance'],
+    tags: ['WordPress', 'HTML5', 'CSS3', 'JavaScript', 'PHP'],
   },
 ];
 

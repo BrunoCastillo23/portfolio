@@ -9,10 +9,11 @@ import logoTicorp   from '../assets/marcas/Ticorp.png';
 import logoSerg     from '../assets/marcas/Sergenind.svg';
 
 // ── Fotos por cargo ──────────────────────────────────
-import fotoResponsable from '../assets/fotos/Responsable.webp';
-import fotoColaborador from '../assets/fotos/Colaborador.webp';
+import fotoResponsable         from '../assets/fotos/Responsable.webp';
+import fotoColaborador         from '../assets/fotos/Colaborador.webp';
+import fotoResponsableSoftware from '../assets/fotos/Responsable_Software.png';
 
-const roleFotos = [fotoResponsable, fotoColaborador];
+const roleFotos = [fotoResponsableSoftware, fotoResponsable, fotoColaborador];
 
 // Datos bilingües
 const expData = {
@@ -22,24 +23,38 @@ const expData = {
     strong: 'laboral',
     sub: 'Mi recorrido profesional construyendo y liderando proyectos web reales.',
     fulltime: 'Tiempo completo',
-    totalPeriod: 'Oct 2025 – Presente',
+    totalPeriod: 'May 2025 – Presente',
     brandsLabel: 'Marcas gestionadas',
     roles: [
       {
+        title: 'Responsable de Desarrollo Software',
+        period: '20 May 2025 – Presente',
+        badge: 'Cargo actual',
+        desc: 'Responsable del área de desarrollo de software, liderando proyectos tecnológicos y coordinando con el equipo para garantizar la calidad y entrega de soluciones digitales.',
+        achievements: [
+          'Lidero el área de desarrollo de software de la agencia',
+          'Coordino proyectos tecnológicos con el equipo técnico y superiores',
+          'Garantizo la calidad y entrega oportuna de soluciones digitales',
+          'Gestiono y organizo al personal del área de desarrollo',
+          'Superviso el desempeño y evolución del equipo',
+        ],
+        tags: ['WordPress', 'Hostinger', 'HTML', 'CSS', 'JavaScript', 'PHP', 'Liderazgo', 'Gestión'],
+      },
+      {
         title: 'Responsable de Desarrollo Web',
         period: '17 Nov 2025 – 27 Mar 2026',
-        badge: 'Cargo actual',
-        desc: 'Lidero el área de desarrollo web gestionando proyectos, personal y relaciones con clientes. Soy el punto de contacto entre el equipo técnico y los superiores.',
+        badge: 'Cargo anterior',
+        desc: 'Lideré el área de desarrollo web gestionando proyectos, personal y relaciones con clientes. Fui el punto de contacto entre el equipo técnico y los superiores.',
         achievements: [
-          'Gestiono y organizo al personal del área de desarrollo web',
-          'Realizo inducción presencial de 3 semanas a los nuevos colaboradores antes de integrarlos a proyectos web',
-          'Superviso y evalúo el desempeño de los colaboradores del equipo',
-          'Hablo directamente con los clientes de cada marca para coordinar avances y requerimientos',
-          'Administro el hosting en Hostinger donde están alojadas todas las marcas',
-          'Realizo migraciones de sitios web entre servidores y dominios',
-          'Ejecuto y gestiono copias de seguridad periódicas de todos los sitios web',
-          'Informo a los superiores sobre el estado y avance de los proyectos',
-          'Apoyo al equipo resolviendo dudas técnicas y desbloqueando problemas',
+          'Gestioné y organicé al personal del área de desarrollo web',
+          'Realicé inducción presencial de 3 semanas a los nuevos colaboradores antes de integrarlos a proyectos web',
+          'Supervisé y evalué el desempeño de los colaboradores del equipo',
+          'Hablé directamente con los clientes de cada marca para coordinar avances y requerimientos',
+          'Administré el hosting en Hostinger donde están alojadas todas las marcas',
+          'Realicé migraciones de sitios web entre servidores y dominios',
+          'Ejecuté y gestioné copias de seguridad periódicas de todos los sitios web',
+          'Informé a los superiores sobre el estado y avance de los proyectos',
+          'Apoyé al equipo resolviendo dudas técnicas y desbloqueando problemas',
         ],
         tags: ['WordPress', 'Hostinger', 'HTML', 'CSS', 'JavaScript', 'PHP', 'Liderazgo', 'Gestión'],
       },
@@ -64,24 +79,38 @@ const expData = {
     strong: 'experience',
     sub: 'My professional journey building and leading real web projects.',
     fulltime: 'Full time',
-    totalPeriod: 'Oct 2025 – Present',
+    totalPeriod: 'May 2025 – Present',
     brandsLabel: 'Managed brands',
     roles: [
       {
+        title: 'Software Development Lead',
+        period: 'May 20, 2025 – Present',
+        badge: 'Current role',
+        desc: 'Responsible for the software development area, leading technology projects and coordinating with the team to ensure quality and timely delivery of digital solutions.',
+        achievements: [
+          'Lead the software development area of the agency',
+          'Coordinate technology projects with the technical team and management',
+          'Ensure quality and timely delivery of digital solutions',
+          'Manage and organize development team members',
+          'Supervise team performance and professional growth',
+        ],
+        tags: ['WordPress', 'Hostinger', 'HTML', 'CSS', 'JavaScript', 'PHP', 'Leadership', 'Management'],
+      },
+      {
         title: 'Web Development Lead',
         period: 'Nov 17, 2025 – Mar 27, 2026',
-        badge: 'Current role',
-        desc: 'I lead the web development area managing projects, staff and client relationships. I am the point of contact between the technical team and management.',
+        badge: 'Previous role',
+        desc: 'I led the web development area managing projects, staff and client relationships. I was the point of contact between the technical team and management.',
         achievements: [
-          'Manage and organize web development team members',
-          'Conduct a 3-week in-person onboarding for new collaborators before integrating them into live projects',
-          'Supervise and evaluate the performance of team collaborators',
-          'Communicate directly with clients of each brand to coordinate progress and requirements',
-          'Manage hosting on Hostinger including domains, databases, backups and server migrations',
-          'Perform migrations of websites between servers and domains',
-          'Execute and manage periodic backups for all production websites',
-          'Report project status and progress updates to management',
-          'Support the team by resolving technical questions and unblocking issues',
+          'Managed and organized web development team members',
+          'Conducted a 3-week in-person onboarding for new collaborators before integrating them into live projects',
+          'Supervised and evaluated the performance of team collaborators',
+          'Communicated directly with clients of each brand to coordinate progress and requirements',
+          'Managed hosting on Hostinger including domains, databases, backups and server migrations',
+          'Performed migrations of websites between servers and domains',
+          'Executed and managed periodic backups for all production websites',
+          'Reported project status and progress updates to management',
+          'Supported the team by resolving technical questions and unblocking issues',
         ],
         tags: ['WordPress', 'Hostinger', 'HTML', 'CSS', 'JavaScript', 'PHP', 'Leadership', 'Management'],
       },
