@@ -8,12 +8,8 @@ import logoPV       from '../assets/marcas/PVElectronica.svg';
 import logoTicorp   from '../assets/marcas/Ticorp.png';
 import logoSerg     from '../assets/marcas/Sergenind.svg';
 
-// ── Fotos por cargo ──────────────────────────────────
-import fotoResponsable         from '../assets/fotos/Responsable.webp';
-import fotoColaborador         from '../assets/fotos/Colaborador.webp';
+// ── Foto del cargo ───────────────────────────────────
 import fotoResponsableSoftware from '../assets/fotos/Responsable_Software.png';
-
-const roleFotos = [fotoResponsableSoftware, fotoResponsable, fotoColaborador];
 
 // Datos bilingües
 const expData = {
@@ -25,53 +21,24 @@ const expData = {
     fulltime: 'Tiempo completo',
     totalPeriod: 'May 2025 – Presente',
     brandsLabel: 'Marcas gestionadas',
-    roles: [
-      {
-        title: 'Responsable de Desarrollo Software',
-        period: '20 May 2025 – Presente',
-        badge: 'Cargo actual',
-        desc: 'Responsable del área de desarrollo de software, liderando proyectos tecnológicos y coordinando con el equipo para garantizar la calidad y entrega de soluciones digitales.',
-        achievements: [
-          'Lidero el área de desarrollo de software de la agencia',
-          'Coordino proyectos tecnológicos con el equipo técnico y superiores',
-          'Garantizo la calidad y entrega oportuna de soluciones digitales',
-          'Gestiono y organizo al personal del área de desarrollo',
-          'Superviso el desempeño y evolución del equipo',
-        ],
-        tags: ['WordPress', 'Hostinger', 'HTML', 'CSS', 'JavaScript', 'PHP', 'Liderazgo', 'Gestión'],
-      },
-      {
-        title: 'Responsable de Desarrollo Web',
-        period: '17 Nov 2025 – 27 Mar 2026',
-        badge: 'Cargo anterior',
-        desc: 'Lideré el área de desarrollo web gestionando proyectos, personal y relaciones con clientes. Fui el punto de contacto entre el equipo técnico y los superiores.',
-        achievements: [
-          'Gestioné y organicé al personal del área de desarrollo web',
-          'Realicé inducción presencial de 3 semanas a los nuevos colaboradores antes de integrarlos a proyectos web',
-          'Supervisé y evalué el desempeño de los colaboradores del equipo',
-          'Hablé directamente con los clientes de cada marca para coordinar avances y requerimientos',
-          'Administré el hosting en Hostinger donde están alojadas todas las marcas',
-          'Realicé migraciones de sitios web entre servidores y dominios',
-          'Ejecuté y gestioné copias de seguridad periódicas de todos los sitios web',
-          'Informé a los superiores sobre el estado y avance de los proyectos',
-          'Apoyé al equipo resolviendo dudas técnicas y desbloqueando problemas',
-        ],
-        tags: ['WordPress', 'Hostinger', 'HTML', 'CSS', 'JavaScript', 'PHP', 'Liderazgo', 'Gestión'],
-      },
-      {
-        title: 'Colaborador Web',
-        period: '07 Oct 2025 – 16 Nov 2025',
-        badge: 'Primer cargo',
-        desc: 'Ingresé realizando correcciones y mejoras en sitios web asignados. Se me proporcionaban credenciales temporales para cada tarea y se revocaban al finalizar.',
-        achievements: [
-          'Realicé arreglos y mejoras en páginas web asignadas por el equipo',
-          'Trabajé con credenciales temporales de acceso, gestionadas por tarea completada',
-          'Ejecuté correcciones de HTML, CSS y JavaScript en entornos WordPress',
-          'Me familiaricé con los flujos de trabajo y estándares del equipo',
-        ],
-        tags: ['WordPress', 'HTML', 'CSS', 'JavaScript', 'PHP'],
-      },
-    ],
+    role: {
+      title: 'Responsable de Desarrollo Software',
+      period: '20 May 2025 – Presente',
+      badge: 'Cargo actual',
+      desc: 'Responsable del área de desarrollo de software, liderando proyectos tecnológicos y coordinando con el equipo para garantizar la calidad y entrega de soluciones digitales.',
+      achievements: [
+        'Lidero el área de desarrollo de software de la agencia',
+        'Coordino proyectos tecnológicos con el equipo técnico y superiores',
+        'Garantizo la calidad y entrega oportuna de soluciones digitales',
+        'Gestiono y organizo al personal del área de desarrollo',
+        'Superviso el desempeño y evolución del equipo',
+        'Desarrollo aplicaciones con Java y Spring Boot para servicios backend robustos',
+        'Construyo interfaces modernas con Angular para proyectos empresariales',
+        'Implemento y administro contenedores con Docker para entornos reproducibles',
+        'Despliego y gestiono infraestructura en servidores de DigitalOcean',
+      ],
+      tags: ['Java', 'Spring Boot', 'Angular', 'Docker', 'DigitalOcean', 'WordPress', 'HTML5', 'CSS3', 'JavaScript', 'PHP', 'Liderazgo'],
+    },
   },
   en: {
     label: 'Career',
@@ -81,53 +48,24 @@ const expData = {
     fulltime: 'Full time',
     totalPeriod: 'May 2025 – Present',
     brandsLabel: 'Managed brands',
-    roles: [
-      {
-        title: 'Software Development Lead',
-        period: 'May 20, 2025 – Present',
-        badge: 'Current role',
-        desc: 'Responsible for the software development area, leading technology projects and coordinating with the team to ensure quality and timely delivery of digital solutions.',
-        achievements: [
-          'Lead the software development area of the agency',
-          'Coordinate technology projects with the technical team and management',
-          'Ensure quality and timely delivery of digital solutions',
-          'Manage and organize development team members',
-          'Supervise team performance and professional growth',
-        ],
-        tags: ['WordPress', 'Hostinger', 'HTML', 'CSS', 'JavaScript', 'PHP', 'Leadership', 'Management'],
-      },
-      {
-        title: 'Web Development Lead',
-        period: 'Nov 17, 2025 – Mar 27, 2026',
-        badge: 'Previous role',
-        desc: 'I led the web development area managing projects, staff and client relationships. I was the point of contact between the technical team and management.',
-        achievements: [
-          'Managed and organized web development team members',
-          'Conducted a 3-week in-person onboarding for new collaborators before integrating them into live projects',
-          'Supervised and evaluated the performance of team collaborators',
-          'Communicated directly with clients of each brand to coordinate progress and requirements',
-          'Managed hosting on Hostinger including domains, databases, backups and server migrations',
-          'Performed migrations of websites between servers and domains',
-          'Executed and managed periodic backups for all production websites',
-          'Reported project status and progress updates to management',
-          'Supported the team by resolving technical questions and unblocking issues',
-        ],
-        tags: ['WordPress', 'Hostinger', 'HTML', 'CSS', 'JavaScript', 'PHP', 'Leadership', 'Management'],
-      },
-      {
-        title: 'Web Collaborator',
-        period: 'Oct 07, 2025 – Nov 16, 2025',
-        badge: 'First role',
-        desc: 'I joined performing corrections and improvements on assigned websites. Temporary credentials were provided per task and revoked upon completion.',
-        achievements: [
-          'Performed fixes and improvements on web pages assigned by the team',
-          'Worked with temporary access credentials managed per completed task',
-          'Executed HTML, CSS and JavaScript corrections in WordPress environments',
-          'Familiarized myself with the team workflows and quality standards',
-        ],
-        tags: ['WordPress', 'HTML', 'CSS', 'JavaScript', 'PHP'],
-      },
-    ],
+    role: {
+      title: 'Software Development Lead',
+      period: 'May 20, 2025 – Present',
+      badge: 'Current role',
+      desc: 'Responsible for the software development area, leading technology projects and coordinating with the team to ensure quality and timely delivery of digital solutions.',
+      achievements: [
+        'Lead the software development area of the agency',
+        'Coordinate technology projects with the technical team and management',
+        'Ensure quality and timely delivery of digital solutions',
+        'Manage and organize development team members',
+        'Supervise team performance and professional growth',
+        'Develop applications with Java and Spring Boot for robust backend services',
+        'Build modern interfaces with Angular for enterprise projects',
+        'Implement and manage containers with Docker for reproducible environments',
+        'Deploy and manage infrastructure on DigitalOcean servers',
+      ],
+      tags: ['Java', 'Spring Boot', 'Angular', 'Docker', 'DigitalOcean', 'WordPress', 'HTML5', 'CSS3', 'JavaScript', 'PHP', 'Leadership'],
+    },
   },
 };
 
@@ -142,8 +80,7 @@ const brands = [
 const Experience: React.FC = () => {
   const { lang } = useLang();
   const d = expData[lang];
-  const [openCard,   setOpenCard]   = useState<number | null>(0);
-  const [activeRole, setActiveRole] = useState<number>(0);
+  const [openCard, setOpenCard] = useState<number | null>(0);
 
   return (
     <section id="experiencia" className="section experience">
@@ -161,7 +98,7 @@ const Experience: React.FC = () => {
                 <img src={logoCV} alt="Consigue Ventas" className="exp-card__logo" />
               </div>
               <div className="exp-card__meta">
-                <div className="exp-card__role">{d.roles[activeRole].title}</div>
+                <div className="exp-card__role">{d.role.title}</div>
                 <div className="exp-card__company">Consigue Ventas</div>
                 <div className="exp-card__info">
                   <span className="exp-badge">{d.totalPeriod}</span>
@@ -183,21 +120,9 @@ const Experience: React.FC = () => {
 
                   {/* Izquierda */}
                   <div className="exp-card__body-left">
-                    <div className="exp-roles-tabs">
-                      {d.roles.map((role, ri) => (
-                        <button
-                          key={ri}
-                          className={`exp-role-tab${activeRole === ri ? ' exp-role-tab--active' : ''}`}
-                          onClick={() => setActiveRole(ri)}
-                        >
-                          <span className="exp-role-tab__title">{role.title}</span>
-                          <span className="exp-role-tab__period">{role.period}</span>
-                        </button>
-                      ))}
-                    </div>
-                    <p className="exp-card__desc">{d.roles[activeRole].desc}</p>
+                    <p className="exp-card__desc">{d.role.desc}</p>
                     <div className="exp-card__achievements">
-                      {d.roles[activeRole].achievements.map((a, j) => (
+                      {d.role.achievements.map((a, j) => (
                         <div key={j} className="exp-achievement">
                           <div className="exp-achievement__dot" />
                           <span>{a}</span>
@@ -205,22 +130,22 @@ const Experience: React.FC = () => {
                       ))}
                     </div>
                     <div className="tag-row">
-                      {d.roles[activeRole].tags.map((tag) => (
+                      {d.role.tags.map((tag) => (
                         <span key={tag} className="tag">{tag}</span>
                       ))}
                     </div>
                   </div>
 
-                  {/* Derecha: foto cambia según cargo + marcas */}
+                  {/* Derecha: foto + marcas */}
                   <div className="exp-card__body-right">
                     <div className="exp-role-photo-wrap">
                       <img
-                        src={roleFotos[activeRole]}
-                        alt={d.roles[activeRole].title}
+                        src={fotoResponsableSoftware}
+                        alt={d.role.title}
                         className="exp-role-photo"
                       />
                       <div className="exp-role-photo__label">
-                        <span>{d.roles[activeRole].title}</span>
+                        <span>{d.role.title}</span>
                         <span>Consigue Ventas</span>
                       </div>
                     </div>
