@@ -86,11 +86,90 @@ const LinkedInIcon = () => (
   </svg>
 );
 
+const TestiCard: React.FC<{ item: Testimonial; isActive: boolean; onClick: () => void; lang: 'es' | 'en' }> = ({
+  item, isActive, onClick, lang,
+}) => {
+  const [expanded, setExpanded] = useState(false);
+  const pendingText  = lang === 'es' ? 'Reseña en progreso...' : 'Review in progress...';
+  const linkedinText = lang === 'es' ? 'Ver perfil en LinkedIn' : 'View LinkedIn profile';
+  const readMoreText = lang === 'es' ? 'Leer más' : 'Read more';
+  const readLessText = lang === 'es' ? 'Leer menos' : 'Read less';
+
+  return (
+    <div
+      className={`testi-card${isActive ? ' testi-card--active' : ''}`}
+      onClick={onClick}
+    >
+      <div className="testi-card__header-row">
+        <img src={item.photo} alt={item.name} className="testi-card__photo" />
+        <div className="testi-card__info">
+          <div className="testi-card__name">{item.name}</div>
+          <div className="testi-card__role">{item.role[lang]}</div>
+          <div className="testi-card__company">{item.company}</div>
+          <span className="testi-card__period-badge">{item.period}</span>
+        </div>
+      </div>
+
+      <div className="testi-card__divider" />
+
+      <div className="testi-card__quote"><QuoteIcon /></div>
+
+      {item.pending ? (
+        <div className="testi-card__pending">
+          <span className="testi-card__pending-dot" />
+          {pendingText}
+        </div>
+      ) : (
+        <div className="testi-card__text-wrap">
+          <p
+            className="testi-card__text"
+            style={{
+              display: '-webkit-box',
+              WebkitLineClamp: expanded ? 'unset' : 4,
+              WebkitBoxOrient: 'vertical',
+              overflow: expanded ? 'visible' : 'hidden',
+            }}
+          >
+            {item.text[lang]}
+          </p>
+          <div className="testi-card__read-more-row">
+            <button
+              className="testi-card__read-more"
+              onClick={(e) => { e.stopPropagation(); setExpanded(!expanded); }}
+            >
+              {expanded ? readLessText : readMoreText}
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                style={{ transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}
+              >
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
+
+      <a
+        href={item.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="testi-card__linkedin"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <LinkedInIcon /> {linkedinText}
+      </a>
+    </div>
+  );
+};
+
 const Testimonials: React.FC = () => {
   const { lang, t } = useLang();
   const [active, setActive] = useState(0);
-  const pendingText  = lang === 'es' ? 'Reseña en progreso...' : 'Review in progress...';
-  const linkedinText = lang === 'es' ? 'Ver perfil en LinkedIn' : 'View LinkedIn profile';
 
   return (
     <section id="testimonios" className="section testimonials">
@@ -102,44 +181,13 @@ const Testimonials: React.FC = () => {
 
         <div className="testimonials__grid">
           {testimonials.map((item, i) => (
-            <div
+            <TestiCard
               key={i}
-              className={`testi-card${i === active ? ' testi-card--active' : ''}`}
+              item={item}
+              isActive={i === active}
               onClick={() => setActive(i)}
-            >
-              <div className="testi-card__header-row">
-                <img src={item.photo} alt={item.name} className="testi-card__photo" />
-                <div className="testi-card__info">
-                  <div className="testi-card__name">{item.name}</div>
-                  <div className="testi-card__role">{item.role[lang]}</div>
-                  <div className="testi-card__company">{item.company}</div>
-                  <span className="testi-card__period-badge">{item.period}</span>
-                </div>
-              </div>
-
-              <div className="testi-card__divider" />
-
-              <div className="testi-card__quote"><QuoteIcon /></div>
-
-              {item.pending ? (
-                <div className="testi-card__pending">
-                  <span className="testi-card__pending-dot" />
-                  {pendingText}
-                </div>
-              ) : (
-                <p className="testi-card__text">{item.text[lang]}</p>
-              )}
-
-              <a
-                href={item.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="testi-card__linkedin"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <LinkedInIcon /> {linkedinText}
-              </a>
-            </div>
+              lang={lang}
+            />
           ))}
         </div>
       </div>

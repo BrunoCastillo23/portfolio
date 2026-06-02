@@ -216,17 +216,42 @@
 .testi-card__quote { color: var(--accent); opacity: 0.2; line-height: 1; }
 .testi-card--active .testi-card__quote { opacity: 0.45; }
 
+/* ── Texto truncado + leer más ── */
+.testi-card__text-wrap { display: flex; flex-direction: column; flex: 1; }
+
 .testi-card__text {
   font-size: 13px;
   color: var(--fg2);
   line-height: 1.8;
-  flex: 1;
   font-style: italic;
   text-align: justify;
   hyphens: auto;
   -webkit-hyphens: auto;
   overflow-wrap: break-word;
+  margin: 0;
 }
+
+.testi-card__read-more-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+
+.testi-card__read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  background: none;
+  border: none;
+  padding: 2px 0;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  font-family: var(--sans);
+}
+.testi-card__read-more:hover { opacity: 0.75; }
 
 .testi-card__pending {
   display: flex; align-items: center; gap: 10px;
