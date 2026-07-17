@@ -8,34 +8,39 @@ import Projects     from './components/Projects';
 import Testimonials from './components/Testimonials';
 import Contact      from './components/Contact';
 import CustomCursor from './components/CustomCursor';
+import { useLang }  from './context/LangContext';
 import './styles/index.css';
 
-const App: React.FC = () => (
-  <>
-    {/* Cursor dinámico — solo desktop */}
-    <CustomCursor />
+const App: React.FC = () => {
+  const { t } = useLang();
 
-    <Navbar />
-    <main>
-      <Hero />
-      <About />
-      <Experience />
-      <Skills />
-      <Projects />
-      <Testimonials />
-      <Contact />
-    </main>
-    <footer className="footer">
-      <div className="footer__inner">
-        <p className="footer__copy">© 2025 Bruno Castillo · Full Stack Developer · Lima, Perú</p>
-        <div className="footer__stack">
-          {['React', 'TypeScript', 'Vite', 'CSS'].map((t) => (
-            <span key={t}>{t}</span>
-          ))}
+  return (
+    <>
+      {/* Cursor dinámico — solo desktop */}
+      <CustomCursor />
+
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Experience />
+        <Skills />
+        <Projects />
+        <Testimonials />
+        <Contact />
+      </main>
+      <footer className="footer">
+        <div className="footer__inner">
+          <p className="footer__copy">{t.footer.copy}</p>
+          <div className="footer__stack">
+            {['React', 'TypeScript', 'Vite', 'CSS'].map((tech) => (
+              <span key={tech}>{tech}</span>
+            ))}
+          </div>
         </div>
-      </div>
-    </footer>
-  </>
-);
+      </footer>
+    </>
+  );
+};
 
 export default App;

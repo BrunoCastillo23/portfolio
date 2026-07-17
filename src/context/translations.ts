@@ -16,8 +16,8 @@ export const translations = {
     // Hero
     hero: {
       available:  'Disponible para proyectos',
-      roles:      ['Full Stack Developer','React Developer','Node.js Developer','TypeScript Developer'],
-      desc:       'Desarrollo soluciones web completas — desde interfaces de usuario hasta APIs robustas. Especializado en React, Node.js y TypeScript para construir productos que generan resultados reales.',
+      roles:      ['Full Stack Developer','Java & Spring Boot Developer','Angular Developer','React Developer'],
+      desc:       'Desarrollo soluciones de software completas — desde interfaces de usuario hasta APIs robustas. Especializado en Java, Spring Boot, Angular, React y Docker para construir productos que generan resultados reales.',
       seeProjects:'Ver proyectos',
       downloadCV: 'Descargar CV',
       cvFile:     '/CV_Bruno_Castillo_Robles.pdf',
@@ -45,27 +45,19 @@ export const translations = {
         { num: '∞', sup: '',  label: 'Ganas de aprender'       },
       ],
     },
-    // Experience
+    // Experience (labels de sección — el detalle del cargo vive en Experience.tsx)
     experience: {
-      label:    'Trayectoria',
-      title:    'Experiencia',
-      strong:   'laboral',
-      sub:      'Mi recorrido profesional construyendo y liderando proyectos web reales.',
-      role1:    'Responsable de Desarrollo Web',
-      role2:    'Colaborador Web',
-      period1:  '17 Nov 2025 – Presente',
-      period2:  '07 Oct 2025 – 16 Nov 2025',
-      fulltime: 'Tiempo completo',
-      brands:   'Marcas gestionadas',
-      desc1: 'Lidero y organizo al personal del área de desarrollo web, asignando tareas y evaluando el desempeño del equipo.',
-      desc2: 'Realicé correcciones y mejoras en páginas web asignadas usando credenciales temporales por tarea.',
+      label:  'Trayectoria',
+      title:  'Experiencia',
+      strong: 'laboral',
+      sub:    'Mi recorrido profesional construyendo y liderando proyectos de software reales.',
     },
     // Skills
     skills: {
       label:  'Stack técnico',
       title:  'Mis',
       strong: 'habilidades',
-      sub:    'Tecnologías que uso día a día para construir productos web completos, de principio a fin.',
+      sub:    'Tecnologías que uso día a día para construir productos de software completos, de principio a fin.',
     },
     // Projects
     projects: {
@@ -101,7 +93,7 @@ export const translations = {
     },
     // Footer
     footer: {
-      copy: '© 2025 Bruno Castillo · Full Stack Developer · Lima, Perú',
+      copy: '© 2025–2026 Bruno Castillo · Full Stack Developer · Lima, Perú',
     },
   },
 
@@ -116,8 +108,8 @@ export const translations = {
     },
     hero: {
       available:  'Available for projects',
-      roles:      ['Full Stack Developer','React Developer','Node.js Developer','TypeScript Developer'],
-      desc:       'I build complete web solutions — from user interfaces to robust APIs. Specialized in React, Node.js and TypeScript to create products that deliver real results.',
+      roles:      ['Full Stack Developer','Java & Spring Boot Developer','Angular Developer','React Developer'],
+      desc:       'I build complete software solutions — from user interfaces to robust APIs. Specialized in Java, Spring Boot, Angular, React and Docker to create products that deliver real results.',
       seeProjects:'View projects',
       downloadCV: 'Download CV',
       cvFile:     '/CV_Bruno_Castillo_Robles_EN.pdf',
@@ -145,24 +137,16 @@ export const translations = {
       ],
     },
     experience: {
-      label:    'Career',
-      title:    'Work',
-      strong:   'experience',
-      sub:      'My professional journey building and leading real web projects.',
-      role1:    'Web Development Lead',
-      role2:    'Web Collaborator',
-      period1:  'Nov 17, 2025 – Present',
-      period2:  'Oct 07, 2025 – Nov 16, 2025',
-      fulltime: 'Full time',
-      brands:   'Managed brands',
-      desc1: 'I lead and organize the web development team, assigning tasks and evaluating the performance of each collaborator.',
-      desc2: 'I performed corrections and improvements on assigned web pages using temporary credentials per task.',
+      label:  'Career',
+      title:  'Work',
+      strong: 'experience',
+      sub:    'My professional journey building and leading real software projects.',
     },
     skills: {
       label:  'Tech stack',
       title:  'My',
       strong: 'skills',
-      sub:    'Technologies I use daily to build complete web products from front to back.',
+      sub:    'Technologies I use daily to build complete software products from front to back.',
     },
     projects: {
       label:  'Real work',
@@ -194,7 +178,7 @@ export const translations = {
       rateLimitMin:'min before trying again.',
     },
     footer: {
-      copy: '© 2025 Bruno Castillo · Full Stack Developer · Lima, Peru',
+      copy: '© 2025–2026 Bruno Castillo · Full Stack Developer · Lima, Peru',
     },
   },
 } as const;

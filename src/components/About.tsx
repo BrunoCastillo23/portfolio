@@ -7,13 +7,18 @@ import fotoGrupo   from '../assets/fotos/Grupo.webp';
 
 // Solo 3 fotos: Perfil_04, DevFest, Grupo
 const fotos = [foto4, fotoDevFest, fotoGrupo];
-const fotoLabels = ['Foto personal', 'DevFest Lima 2025', 'Grupo de estudio'];
+
+const fotoLabels = {
+  es: ['Foto personal', 'DevFest Lima 2025', 'Grupo de estudio'],
+  en: ['Personal photo', 'DevFest Lima 2025', 'Study group'],
+};
 
 const AUTOPLAY_MS = 5000; // cambia cada 5 segundos
 
 const About: React.FC = () => {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [current, setCurrent] = useState(0);
+  const labels = fotoLabels[lang];
 
   // Carrusel automático cada 5 segundos
   useEffect(() => {
@@ -53,8 +58,8 @@ const About: React.FC = () => {
 
           <div className="about__carousel">
             <div className="carousel__img-wrap">
-              <img src={fotos[current]} alt={fotoLabels[current]} className="carousel__img" />
-              <div className="carousel__label">{fotoLabels[current]}</div>
+              <img src={fotos[current]} alt={labels[current]} className="carousel__img" />
+              <div className="carousel__label">{labels[current]}</div>
             </div>
             <div className="carousel__dots">
               {fotos.map((_, i) => (
@@ -62,7 +67,7 @@ const About: React.FC = () => {
                   key={i}
                   className={`carousel__dot${i === current ? ' carousel__dot--active' : ''}`}
                   onClick={() => setCurrent(i)}
-                  aria-label={fotoLabels[i]}
+                  aria-label={labels[i]}
                 />
               ))}
             </div>
