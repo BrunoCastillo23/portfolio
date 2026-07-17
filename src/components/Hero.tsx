@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
               </svg>
               {t.hero.seeProjects}
             </a>
-            <a href="/cv-bruno-castillo.pdf" download className="btn btn--cv">
+            <a href={t.hero.cvFile} download className="btn btn--cv">
               <DownloadIcon />{t.hero.downloadCV}
             </a>
           </div>

@@ -19,14 +19,15 @@ export const translations = {
       desc:       'Desarrollo soluciones web completas — desde interfaces de usuario hasta APIs robustas. Especializado en React, Node.js y TypeScript para construir productos que generan resultados reales.',
       seeProjects:'Ver proyectos',
       downloadCV: 'Descargar CV',
+      cvFile:     '/CV_Bruno_Castillo_Robles.pdf',
     },
     // About
     about: {
       label:  'Sobre mí',
       title:  'Apasionado por el',
-      strong: 'desarrollo web',
-      p1: 'Soy Bruno Castillo, desarrollador Full Stack de Huaral, Perú, con 22 años y actualmente en el 9° ciclo de Ingeniería de Sistemas en la UNJFSC. Mi pasión por el desarrollo web nació al ver cómo el código puede transformar ideas en productos reales que impactan a las personas.',
-      p2: 'Me especializo en construir interfaces intuitivas con React y soluciones backend con Node.js y PHP. Actualmente lidero el área de desarrollo web en una agencia digital, gestionando un equipo, coordinando con clientes y administrando infraestructura de hosting en producción.',
+      strong: 'desarrollo de software',
+      p1: 'Soy Bruno Castillo, desarrollador Full Stack de Huaral, Perú, con 22 años y actualmente en el 9° ciclo de Ingeniería de Sistemas en la UNJFSC. Mi pasión por el desarrollo de software nació al ver cómo el código puede transformar ideas en productos reales que impactan a las personas.',
+      p2: 'En el frontend construyo interfaces modernas con React, Angular y TypeScript. En el backend tengo una base sólida con Java, Spring Boot, Node.js y PHP, y manejo Docker y DigitalOcean para desplegar y administrar infraestructura en producción. Actualmente lidero el área de desarrollo de software en una agencia digital, gestionando un equipo y coordinando con clientes.',
       p3: 'Fuera del trabajo participo activamente en la comunidad tech — asistí al DevFest Lima 2025, me mantengo en constante aprendizaje y disfruto colaborar con otros desarrolladores para seguir creciendo.',
       badges: [
         '🎓 Ing. Sistemas — 9° ciclo · UNJFSC',
@@ -117,13 +118,14 @@ export const translations = {
       desc:       'I build complete web solutions — from user interfaces to robust APIs. Specialized in React, Node.js and TypeScript to create products that deliver real results.',
       seeProjects:'View projects',
       downloadCV: 'Download CV',
+      cvFile:     '/CV_Bruno_Castillo_Robles_EN.pdf',
     },
     about: {
       label:  'About me',
       title:  'Passionate about',
-      strong: 'web development',
-      p1: "I'm Bruno Castillo, a Full Stack developer from Huaral, Peru, 22 years old, currently in my 9th semester of Systems Engineering at UNJFSC. My passion for web development started when I realized code can transform ideas into real products that impact people.",
-      p2: 'I specialize in building intuitive interfaces with React and backend solutions with Node.js and PHP. I currently lead the web development area at a digital agency, managing a team, coordinating with clients and handling hosting infrastructure in production.',
+      strong: 'software development',
+      p1: "I'm Bruno Castillo, a Full Stack developer from Huaral, Peru, 22 years old, currently in my 9th semester of Systems Engineering at UNJFSC. My passion for software development started when I realized code can transform ideas into real products that impact people.",
+      p2: 'On the frontend I build modern interfaces with React, Angular and TypeScript. On the backend I have a solid foundation with Java, Spring Boot, Node.js and PHP, and I work with Docker and DigitalOcean to deploy and manage production infrastructure. I currently lead the software development area at a digital agency, managing a team and coordinating with clients.',
       p3: 'Outside work I actively participate in the tech community — I attended DevFest Lima 2025, keep learning constantly and enjoy collaborating with other developers to keep growing.',
       badges: [
         '🎓 Systems Eng. — 9th semester · UNJFSC',
