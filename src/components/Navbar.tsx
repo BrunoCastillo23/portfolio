@@ -9,10 +9,11 @@ const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
-    { label: t.nav.about,      href: '#sobre'      },
-    { label: t.nav.experience, href: '#experiencia' },
-    { label: t.nav.skills,     href: '#habilidades' },
-    { label: t.nav.projects,   href: '#proyectos'   },
+    { label: t.nav.about,        href: '#sobre'       },
+    { label: t.nav.experience,   href: '#experiencia' },
+    { label: t.nav.skills,       href: '#habilidades' },
+    { label: t.nav.projects,     href: '#proyectos'   },
+    { label: t.nav.testimonials, href: '#testimonios' },
   ];
 
   useEffect(() => {

@@ -6,11 +6,12 @@ export const translations = {
   es: {
     // Navbar
     nav: {
-      about:      'Sobre mí',
-      experience: 'Experiencia',
-      skills:     'Skills',
-      projects:   'Proyectos',
-      contact:    'Contactar',
+      about:        'Sobre mí',
+      experience:   'Experiencia',
+      skills:       'Skills',
+      projects:     'Proyectos',
+      testimonials: 'Testimonios',
+      contact:      'Contactar',
     },
     // Hero
     hero: {
@@ -106,11 +107,12 @@ export const translations = {
 
   en: {
     nav: {
-      about:      'About',
-      experience: 'Experience',
-      skills:     'Skills',
-      projects:   'Projects',
-      contact:    'Contact',
+      about:        'About',
+      experience:   'Experience',
+      skills:       'Skills',
+      projects:     'Projects',
+      testimonials: 'Testimonials',
+      contact:      'Contact',
     },
     hero: {
       available:  'Available for projects',
