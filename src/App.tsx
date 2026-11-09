@@ -12,6 +12,7 @@ import ProjectDetail from './components/ProjectDetail';
 import Certifications from './components/Certifications';
 import Notes         from './components/Notes';
 import NoteDetail    from './components/NoteDetail';
+import NotFound      from './components/NotFound';
 import { useLang }   from './context/LangContext';
 import { findProject } from './data/featuredProjects';
 import { findNote }    from './data/notes';
@@ -22,12 +23,13 @@ const App: React.FC = () => {
   const { t } = useLang();
   const path = usePath();
 
-  // /proyectos/:slug y /notas/:slug → páginas de detalle; cualquier otra ruta → portafolio
+  // /proyectos/:slug y /notas/:slug → páginas de detalle; / → portafolio; resto → 404
   const projectSlug = path.match(/^\/proyectos\/([\w-]+)\/?$/)?.[1];
   const noteSlug    = path.match(/^\/notas\/([\w-]+)\/?$/)?.[1];
   const project = projectSlug ? findProject(projectSlug) : undefined;
   const note    = noteSlug ? findNote(noteSlug) : undefined;
-  const view    = project ? 'project' : note ? 'note' : 'home';
+  const isHome  = path === '/' || path === '/index.html';
+  const view    = project ? 'project' : note ? 'note' : isHome ? 'home' : 'notfound';
 
   return (
     <>
@@ -40,6 +42,8 @@ const App: React.FC = () => {
         <ProjectDetail project={project} />
       ) : note ? (
         <NoteDetail note={note} />
+      ) : view === 'notfound' ? (
+        <NotFound />
       ) : (
         <main>
           <Hero />

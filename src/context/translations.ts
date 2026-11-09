@@ -27,11 +27,11 @@ export const translations = {
       label:  'Sobre mí',
       title:  'Apasionado por el',
       strong: 'desarrollo de software',
-      p1: 'Soy Bruno Castillo, desarrollador Full Stack de Huaral, Perú, con 22 años y actualmente en el 9° ciclo de Ingeniería de Sistemas en la UNJFSC. Mi pasión por el desarrollo de software nació al ver cómo el código puede transformar ideas en productos reales que impactan a las personas.',
-      p2: 'En el backend trabajo con Java y Spring Boot (Spring Security, JPA, Flyway) y con Laravel; en el frontend construyo interfaces con Angular, React y TypeScript. Llevo mis proyectos a producción con Docker, GitHub Actions y Cloudflare. Lideré el núcleo de desarrollo de software de Consigue Ventas, con equipos de 12 a 15 desarrolladores, y hoy soy Developer Lead en mis prácticas pre profesionales en la UNJFSC, donde dirijo la plataforma de prácticas de la Escuela de Ingeniería de Sistemas.',
+      p1: 'Soy Bruno Castillo, desarrollador Full Stack de Huaral, Perú, con 22 años y actualmente en el 10° ciclo de Ingeniería de Sistemas en la UNJFSC. Mi pasión por el desarrollo de software nació al ver cómo el código puede transformar ideas en productos reales que impactan a las personas.',
+      p2: 'En el backend trabajo con Java y Spring Boot (Spring Security, JPA, Flyway), Laravel y PHP, y Node.js, sobre bases de datos PostgreSQL, SQL Server y MySQL/MariaDB. En el frontend construyo interfaces con Angular, React, TypeScript y Tailwind CSS. Llevo mis proyectos a producción con Docker, GitHub Actions y Cloudflare. No me limito a un stack: aprendo rápido y me adapto a nuevas tecnologías según lo que necesite cada proyecto. Lideré el núcleo de desarrollo de software de Consigue Ventas, con equipos de 12 a 15 desarrolladores, y hoy soy Developer Lead en mis prácticas pre profesionales en la UNJFSC.',
       p3: 'Fuera del trabajo participo activamente en la comunidad tech — asistí al DevFest Lima 2025, me mantengo en constante aprendizaje y disfruto colaborar con otros desarrolladores para seguir creciendo.',
       badges: [
-        '🎓 Ing. Sistemas — 9° ciclo · UNJFSC',
+        '🎓 Ing. Sistemas — 10° ciclo · UNJFSC',
         '📍 Huaral, Lima — Perú',
         '🎂 22 años',
         '🧑‍💻 Developer Lead · Prácticas UNJFSC',
@@ -104,6 +104,12 @@ export const translations = {
       project:'Proyecto relacionado',
       more:   'Más notas',
     },
+    // Página 404
+    notFound: {
+      title: 'Página no encontrada',
+      text:  'La dirección que buscas no existe o fue movida.',
+      home:  'Volver al inicio',
+    },
     // Testimonials
     testimonials: {
       label:  'Lo que dicen',
@@ -155,11 +161,11 @@ export const translations = {
       label:  'About me',
       title:  'Passionate about',
       strong: 'software development',
-      p1: "I'm Bruno Castillo, a Full Stack developer from Huaral, Peru, 22 years old, currently in my 9th semester of Systems Engineering at UNJFSC. My passion for software development started when I realized code can transform ideas into real products that impact people.",
-      p2: 'On the backend I work with Java and Spring Boot (Spring Security, JPA, Flyway) and with Laravel; on the frontend I build interfaces with Angular, React and TypeScript. I ship my projects to production with Docker, GitHub Actions and Cloudflare. I led the software development core at Consigue Ventas, with teams of 12 to 15 developers, and I am now Developer Lead in my pre-professional internship at UNJFSC, where I lead the internship platform for the Systems Engineering School.',
+      p1: "I'm Bruno Castillo, a Full Stack developer from Huaral, Peru, 22 years old, currently in my 10th semester of Systems Engineering at UNJFSC. My passion for software development started when I realized code can transform ideas into real products that impact people.",
+      p2: 'On the backend I work with Java and Spring Boot (Spring Security, JPA, Flyway), Laravel and PHP, and Node.js, on PostgreSQL, SQL Server and MySQL/MariaDB databases. On the frontend I build interfaces with Angular, React, TypeScript and Tailwind CSS. I ship my projects to production with Docker, GitHub Actions and Cloudflare. I am not tied to one stack: I learn fast and adapt to new technologies based on what each project needs. I led the software development core at Consigue Ventas, with teams of 12 to 15 developers, and I am now Developer Lead in my pre-professional internship at UNJFSC.',
       p3: 'Outside work I actively participate in the tech community — I attended DevFest Lima 2025, keep learning constantly and enjoy collaborating with other developers to keep growing.',
       badges: [
-        '🎓 Systems Eng. — 9th semester · UNJFSC',
+        '🎓 Systems Eng. — 10th semester · UNJFSC',
         '📍 Huaral, Lima — Peru',
         '🎂 22 years old',
         '🧑‍💻 Developer Lead · UNJFSC internship',
@@ -226,6 +232,11 @@ export const translations = {
       back:   'Back to notes',
       project:'Related project',
       more:   'More notes',
+    },
+    notFound: {
+      title: 'Page not found',
+      text:  'The page you are looking for does not exist or was moved.',
+      home:  'Back to home',
     },
     testimonials: {
       label:  'What they say',

@@ -6,7 +6,7 @@ import logoCV       from '../assets/marcas/ConsigueVentas.svg';
 import logoEffetha  from '../assets/marcas/Effetha.svg';
 import logoKare     from '../assets/marcas/Kare.svg';
 import logoPV       from '../assets/marcas/PVElectronica.svg';
-import logoTicorp   from '../assets/marcas/Ticorp.png';
+import logoTicorp   from '../assets/marcas/Ticorp.webp';
 import logoSerg     from '../assets/marcas/Sergenind.svg';
 import logoUNJFSC   from '../assets/marcas/UNJFSC.webp';
 import logoSistemas from '../assets/marcas/Sistemas-UNJFSC.webp';
@@ -242,7 +242,7 @@ const Experience: React.FC = () => {
                             <div className="exp-card__brands">
                               {job.brands.map((b) => (
                                 <div key={b.name} className="exp-brand">
-                                  <img src={b.logo} alt={b.name} />
+                                  <img src={b.logo} alt={b.name} loading="lazy" />
                                 </div>
                               ))}
                             </div>

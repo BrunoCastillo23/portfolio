@@ -95,7 +95,9 @@ const Navbar: React.FC<{ isHome?: boolean }> = ({ isHome = true }) => {
           <button
             className={`nav__hamburger${menuOpen ? ' open' : ''}`}
             onClick={() => setMenuOpen((v) => !v)}
-            aria-label="Abrir menú"
+            aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
           >
             <span /><span /><span />
           </button>
@@ -104,7 +106,7 @@ const Navbar: React.FC<{ isHome?: boolean }> = ({ isHome = true }) => {
       </nav>
 
       {/* ── Menú móvil desplegable ── */}
-      <div className={`nav__mobile-menu${menuOpen ? ' open' : ''}`}>
+      <div id="mobile-menu" className={`nav__mobile-menu${menuOpen ? ' open' : ''}`}>
         {navItems.map((item) => (
           <a
             key={item.href}

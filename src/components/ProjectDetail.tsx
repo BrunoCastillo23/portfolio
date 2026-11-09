@@ -94,7 +94,7 @@ const ProjectDetail: React.FC<{ project: FeaturedProject }> = ({ project: p }) =
               <div className="dot dot--r" /><div className="dot dot--y" /><div className="dot dot--g" />
               <span className="proj-card__url">{p.url}</span>
             </div>
-            <img src={p.cover} alt={p.gallery[0].caption[lang]} />
+            <img src={p.cover} alt="" width={960} height={600} fetchPriority="high" />
           </button>
         </div>
       </header>
@@ -197,7 +197,7 @@ const ProjectDetail: React.FC<{ project: FeaturedProject }> = ({ project: p }) =
                 className={`pd-shot${g.mobile ? ' pd-shot--mobile' : ''}`}
                 onClick={() => setLightbox(i)}
               >
-                <img src={g.src} alt={g.caption[lang]} loading="lazy" />
+                <img src={g.src} alt="" loading="lazy" />
                 <span className="pd-shot__caption">{g.caption[lang]}</span>
               </button>
             ))}

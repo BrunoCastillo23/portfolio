@@ -25,14 +25,16 @@ const CustomCursor: React.FC = () => {
       setHovered(!!el.closest('a, button, [role="button"], input, textarea, select'));
     };
 
-    // lerp 0.15 → sigue con retraso suave, sin saltos
+    // lerp 0.22 → sigue con un retraso corto y suave
     const animate = () => {
       const { x: mx, y: my } = mousePos.current;
-      ringPos.current.x += (mx - ringPos.current.x) * 0.15;
-      ringPos.current.y += (my - ringPos.current.y) * 0.15;
+      ringPos.current.x += (mx - ringPos.current.x) * 0.22;
+      ringPos.current.y += (my - ringPos.current.y) * 0.22;
+      // Se usa la propiedad `translate` (no `transform`) para que el `scale`
+      // del estado hover agrande el anillo en su sitio sin desplazarlo.
       if (ringRef.current) {
-        ringRef.current.style.transform =
-          `translate(${ringPos.current.x - 20}px, ${ringPos.current.y - 20}px)`;
+        ringRef.current.style.translate =
+          `${ringPos.current.x - 20}px ${ringPos.current.y - 20}px`;
       }
       rafRef.current = requestAnimationFrame(animate);
     };

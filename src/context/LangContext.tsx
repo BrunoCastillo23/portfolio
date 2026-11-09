@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { translations, Lang } from './translations';
 
 // Tipo que acepta tanto 'es' como 'en' sin conflicto
@@ -25,6 +25,9 @@ export const LangProvider: React.FC<{ children: React.ReactNode }> = ({ children
       return 'es';
     }
   });
+
+  // El atributo lang del <html> sigue al idioma elegido (lectores de pantalla y traductores)
+  useEffect(() => { document.documentElement.lang = lang; }, [lang]);
 
   const toggle = () => {
     const next: Lang = lang === 'es' ? 'en' : 'es';

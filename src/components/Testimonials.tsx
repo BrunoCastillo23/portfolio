@@ -101,7 +101,7 @@ const TestiCard: React.FC<{ item: Testimonial; isActive: boolean; onClick: () =>
       onClick={onClick}
     >
       <div className="testi-card__header-row">
-        <img src={item.photo} alt={item.name} className="testi-card__photo" />
+        <img src={item.photo} alt={item.name} className="testi-card__photo" loading="lazy" width={80} height={80} />
         <div className="testi-card__info">
           <div className="testi-card__name">{item.name}</div>
           <div className="testi-card__role">{item.role[lang]}</div>

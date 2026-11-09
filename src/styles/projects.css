@@ -259,3 +259,27 @@
   .certs__grid, .notes__grid, .notes__grid--two { grid-template-columns: 1fr; }
   .note__body p { font-size: 15px; }
 }
+
+/* ── Skills: íconos SVG locales ── */
+.skill-card__img { width: 30px; height: 30px; object-fit: contain; display: block; }
+:root:not([data-theme="light"]) .skill-card__img--invert { filter: invert(1); }
+:root:not([data-theme="light"]) .skill-card__img--brighten { filter: brightness(2.2) saturate(0.9); }
+
+/* ── Accesibilidad ── */
+/* Menú móvil cerrado: fuera del orden de tabulación y de los lectores de pantalla */
+.nav__mobile-menu { visibility: hidden; transition: transform 0.3s ease, visibility 0s linear 0.3s; }
+.nav__mobile-menu.open { visibility: visible; transition: transform 0.3s ease, visibility 0s; }
+/* Puntos del carrusel: área táctil de 24 px sin cambiar su aspecto */
+.carousel__dot { position: relative; }
+.carousel__dot::after { content: ''; position: absolute; inset: -8px; }
+.carousel__dots { gap: 16px; }
+
+/* ── Página 404 ── */
+.notfound { min-height: calc(100vh - 80px); display: flex; align-items: center; }
+.notfound__code { font-family: var(--mono); font-size: clamp(72px, 14vw, 140px); line-height: 1; color: var(--accent); opacity: 0.25; margin-bottom: 8px; }
+
+/* ── Contraste de botones principales (texto blanco ≥ 4.5:1) ── */
+.btn--dark, .btn--white, .nav__cta, .nav__mobile-cta, .btn--cv:hover { background: var(--accent2); }
+.btn--dark:hover, .btn--white:hover, .nav__cta:hover, .nav__mobile-cta:hover { background: #0f4fa0; }
+.footer__stack span { opacity: 1; }
+[data-theme="light"] .btn--dark:hover, [data-theme="light"] .btn--white:hover, [data-theme="light"] .nav__cta:hover, [data-theme="light"] .nav__mobile-cta:hover { background: #0b3d7d; }

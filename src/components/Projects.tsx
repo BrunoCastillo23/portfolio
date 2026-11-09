@@ -5,7 +5,7 @@ import { linkTo } from '../router';
 
 import logoEffetha       from '../assets/marcas/Effetha.svg';
 import logoCV            from '../assets/marcas/ConsigueVentas.svg';
-import logoTicorp        from '../assets/marcas/Ticorp.png';
+import logoTicorp        from '../assets/marcas/Ticorp.webp';
 import logoKare          from '../assets/marcas/Kare.svg';
 import logoPVElectronica from '../assets/marcas/PVElectronica.svg';
 import logoSergenind     from '../assets/marcas/Sergenind.svg';
@@ -179,6 +179,7 @@ const Projects: React.FC = () => {
                     src={logoMap[proj.url]}
                     alt={`Logo ${proj.name}`}
                     className="proj-card__logo-img"
+                    loading="lazy"
                     style={logoStyleMap[proj.url]}
                   />
                 </div>

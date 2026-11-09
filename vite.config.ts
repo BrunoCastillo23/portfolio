@@ -57,6 +57,16 @@ function seoPages(): Plugin {
         mkdirSync(dirname(file), { recursive: true })
         writeFileSync(file, withMeta(base, r))
       }
+      // 404.html: Cloudflare Pages lo sirve con estado 404 para rutas inexistentes
+      // (sin este archivo devolvería la portada con 200). React muestra NotFound.
+      const notFound = withMeta(base, {
+        path: '/404',
+        title: 'Página no encontrada | Bruno Castillo',
+        description: 'La dirección que buscas no existe o fue movida.',
+        image: '/og-image.jpg',
+      }).replace(/(<meta\s+name="robots"\s+content=")[^"]*(")/, '$1noindex$2')
+      writeFileSync('dist/404.html', notFound)
+
       const today = new Date().toISOString().slice(0, 10)
       const urls = ['/', ...routes.map((r) => r.path)]
         .map((p) => `  <url><loc>${SITE_URL}${p}</loc><lastmod>${today}</lastmod></url>`)
@@ -87,12 +97,13 @@ export default defineConfig({
       'Referrer-Policy': 'strict-origin-when-cross-origin',
       // Permisos de APIs del navegador — solo las necesarias
       'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
-      // Content Security Policy — controla qué recursos puede cargar el sitio
+      // Content Security Policy. En dev se permite script en línea por el preámbulo
+      // de React Refresh de Vite; en producción (public/_headers) no hace falta.
       'Content-Security-Policy': [
         "default-src 'self'",
         "script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://challenges.cloudflare.com",
-        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net",
-        "font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net",
+        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+        "font-src 'self' https://fonts.gstatic.com",
         "img-src 'self' data: blob:",
         "connect-src 'self' https://api.emailjs.com https://cloudflareinsights.com",
         "frame-src https://challenges.cloudflare.com",
