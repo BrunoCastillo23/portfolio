@@ -73,8 +73,8 @@ export const featuredProjects: FeaturedProject[] = [
         en: 'Internships used to be handled with paper documents, emails and spreadsheets: students did not know the status of their process and faculty reviewed files by hand. This platform centralizes the whole flow in one place, with clear statuses and traceability for every document.',
       },
       {
-        es: 'Como Developer Lead coordino al equipo de desarrollo, defino la arquitectura modular por dominios, reviso cada Pull Request y me encargo del despliegue automatizado en producción.',
-        en: 'As Developer Lead I coordinate the development team, define the domain-based modular architecture, review every Pull Request and own the automated production deployment.',
+        es: 'Como Developer Lead coordino al equipo de desarrollo, lideré la reorganización del código, que estaba desordenado, a una arquitectura modular por dominios, reviso cada Pull Request y me encargo del despliegue automatizado en producción.',
+        en: 'As Developer Lead I coordinate the development team, led the reorganization of a messy codebase into a domain-based modular architecture, review every Pull Request and own the automated production deployment.',
       },
     ],
     stats: [
