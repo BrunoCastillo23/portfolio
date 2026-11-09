@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { useLang } from '../context/LangContext';
+import Turnstile from './Turnstile';
 import {
   checkRateLimit,
   registerSubmission,
@@ -11,6 +12,9 @@ import {
 const EJ_SERVICE  = import.meta.env.VITE_EJ_SERVICE  as string;
 const EJ_TEMPLATE = import.meta.env.VITE_EJ_TEMPLATE as string;
 const EJ_PUBLIC   = import.meta.env.VITE_EJ_PUBLIC   as string;
+// Con clave de Turnstile el envío pasa por /api/contact (verificación en servidor).
+// Sin clave (desarrollo local) se usa EmailJS directo desde el navegador.
+const TURNSTILE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined;
 
 const PhoneIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -57,6 +61,8 @@ const Contact: React.FC = () => {
   const [errors,      setErrors]      = useState<Record<string, string>>({});
   const [minutesLeft, setMinutesLeft] = useState(0);
   const honeypotRef = useRef<HTMLInputElement>(null);
+  const [captcha,     setCaptcha]     = useState<string | null>(null);
+  const [captchaReset, setCaptchaReset] = useState(0);
 
   const [form, setForm] = useState({
     from_name:  '',
@@ -100,15 +106,26 @@ const Contact: React.FC = () => {
     };
 
     try {
-      await emailjs.send(EJ_SERVICE, EJ_TEMPLATE, safePayload, EJ_PUBLIC);
+      if (TURNSTILE_KEY) {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...safePayload, token: captcha }),
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      } else {
+        await emailjs.send(EJ_SERVICE, EJ_TEMPLATE, safePayload, EJ_PUBLIC);
+      }
       registerSubmission();
       setStatus('success');
       setForm({ from_name: '', from_email: '', subject: '', message: '' });
       setTimeout(() => setStatus('idle'), 5000);
     } catch (err) {
-      console.error('EmailJS error:', err);
+      console.error('Contact error:', err);
       setStatus('error');
       setTimeout(() => setStatus('idle'), 5000);
+    } finally {
+      if (TURNSTILE_KEY) setCaptchaReset((n) => n + 1);
     }
   };
 
@@ -175,7 +192,21 @@ const Contact: React.FC = () => {
               </div>
             )}
 
-            <button type="submit" className="btn btn--white contact-form__btn" disabled={status === 'sending' || status === 'rate_limited'}>
+            {TURNSTILE_KEY && (
+              <Turnstile
+                siteKey={TURNSTILE_KEY}
+                lang={lang}
+                theme={document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'}
+                onToken={setCaptcha}
+                resetSignal={captchaReset}
+              />
+            )}
+
+            <button
+              type="submit"
+              className="btn btn--white contact-form__btn"
+              disabled={status === 'sending' || status === 'rate_limited' || (!!TURNSTILE_KEY && !captcha)}
+            >
               {status === 'idle'         && (<>{t.contact.send} <SendIcon /></>)}
               {status === 'sending'      && (<><span className="contact-form__spinner" /> {t.contact.sending}</>)}
               {status === 'success'      && <>{t.contact.success}</>}

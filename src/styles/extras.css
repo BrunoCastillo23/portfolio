@@ -67,25 +67,18 @@
 /* ══════════════════════════════════════════════════════
    CURSOR DINÁMICO
 ══════════════════════════════════════════════════════ */
-@media (pointer: fine) { * { cursor: none !important; } }
-
-.cursor__dot {
-  position: fixed; top: 0; left: 0;
-  width: 10px; height: 10px; border-radius: 50%;
-  background: var(--accent);
-  pointer-events: none; z-index: 9999;
-  will-change: transform;
-}
-.cursor__dot--hover { background: #fff; width: 12px; height: 12px; }
+/* El cursor real siempre se ve: el anillo es solo decorativo y se oculta
+   en pantallas táctiles y cuando el usuario prefiere menos movimiento. */
 .cursor__ring {
   position: fixed; top: 0; left: 0;
   width: 40px; height: 40px; border-radius: 50%;
-  border: 1.5px solid var(--accent); opacity: 0.4;
+  border: 1.5px solid var(--accent); opacity: 0.35;
   pointer-events: none; z-index: 9998;
   will-change: transform;
-  transition: width 0.2s, height 0.2s, opacity 0.2s, border-color 0.2s;
+  transition: scale 0.2s, opacity 0.2s;
 }
-.cursor__ring--hover { width: 52px; height: 52px; opacity: 0.6; border-width: 2px; }
+.cursor__ring--hover { scale: 1.3; opacity: 0.6; }
+@media (pointer: coarse), (prefers-reduced-motion: reduce) { .cursor__ring { display: none; } }
 
 /* ══════════════════════════════════════════════════════
    HERO — Typing + CV button
@@ -114,7 +107,6 @@
 .about__stats-inline .stat-card { padding: 16px 8px; text-align: center; }
 .about__stats-inline .stat-card__num { font-size: 26px; display: block; text-align: center; }
 .about__stats-inline .stat-card__label { text-align: center; font-size: 11px; margin-top: 4px; line-height: 1.4; }
-.about__stats-row { display: none; }
 .carousel__img-wrap { position: relative; }
 .carousel__label { position: absolute; bottom: 0; left: 0; right: 0; padding: 8px 12px; background: rgba(10,12,16,0.7); backdrop-filter: blur(4px); font-size: 11px; font-family: var(--mono); color: rgba(255,255,255,0.7); text-align: center; letter-spacing: 0.04em; }
 
@@ -124,15 +116,6 @@
 .skill-card__icon { width: 48px; height: 48px; border-radius: 10px; background: rgba(255,255,255,0.04); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; transition: background 0.2s, border-color 0.2s; }
 .skill-card:hover .skill-card__icon { background: rgba(255,255,255,0.08); border-color: var(--border); }
 .skill-card__icon i { font-size: 28px !important; line-height: 1; }
-
-/* ══════════════════════════════════════════════════════
-   PROJECTS — Logo Ticorp más grande
-══════════════════════════════════════════════════════ */
-/* Logo con mucho margen interno — se muestra más grande para compensar */
-.proj-card__logo-img--large {
-  max-width: 88% !important;
-  max-height: 80px !important;
-}
 
 /* ══════════════════════════════════════════════════════
    CONTACT — Formulario seguro
@@ -282,8 +265,7 @@
 }
 @media (max-width: 768px) {
   .about__stats-inline { grid-template-columns: repeat(2, 1fr); }
-  .cursor__dot, .cursor__ring { display: none; }
-  * { cursor: auto !important; }
+  .cursor__ring { display: none; }
   .testimonials__grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 480px) {

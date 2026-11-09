@@ -1,0 +1,34 @@
+/* Estilos del CV (se exporta a PDF tamaño carta: Ctrl+P → Guardar como PDF, márgenes "Ninguno") */
+@page { size: Letter; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  font-size: 8.9pt; line-height: 1.23; color: #111;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.page { width: 8.5in; min-height: 11in; padding: 0.34in 0.55in 0.26in; }
+a { color: #1a4fd6; }
+
+header { text-align: center; margin-bottom: 8px; }
+h1 { font-size: 17pt; font-weight: 700; letter-spacing: 0.01em; margin-bottom: 3px; }
+.contact { color: #444; font-size: 9.2pt; }
+.contact span + span::before { content: '|'; margin: 0 7px; color: #777; }
+
+h2 {
+  font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em;
+  border-bottom: 1.3px solid #111; padding-bottom: 1px; margin: 6px 0 4px;
+}
+p { text-align: justify; }
+
+.entry { margin-bottom: 4px; }
+.entry-head { display: flex; justify-content: space-between; gap: 12px; }
+.entry-head strong { font-weight: 700; }
+.entry-head em { color: #444; white-space: nowrap; padding-right: 0.15in; }
+.sub { font-style: italic; color: #444; }
+ul { list-style: none; margin-top: 2px; }
+li { position: relative; padding-left: 20px; margin-bottom: 1px; }
+li::before { content: '●'; position: absolute; left: 7px; top: 0; font-size: 8pt; }
+.link { font-weight: 400; font-size: 8.6pt; margin-left: 6px; }
+
+.skills div { margin-bottom: 1.5px; }
+.skills b { font-weight: 700; }

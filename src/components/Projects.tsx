@@ -1,5 +1,7 @@
 import React from 'react';
 import { useLang } from '../context/LangContext';
+import { featuredProjects } from '../data/featuredProjects';
+import { linkTo } from '../router';
 
 import logoEffetha       from '../assets/marcas/Effetha.svg';
 import logoCV            from '../assets/marcas/ConsigueVentas.svg';
@@ -109,8 +111,51 @@ const Projects: React.FC = () => {
       <div className="wrap">
         <div className="sec-label">{t.projects.label}</div>
         <h2 className="sec-title">{t.projects.title} <strong>{t.projects.strong}</strong></h2>
+        <p className="projects__sub">{t.projects.sub}</p>
+
+        {/* ── Plataformas destacadas: abren su página de detalle ── */}
+        <h3 className="projects__group-title">{t.projects.featured}</h3>
+        <div className="featured__grid">
+          {featuredProjects.map((proj) => (
+            <a
+              key={proj.slug}
+              href={`/proyectos/${proj.slug}`}
+              onClick={linkTo(`/proyectos/${proj.slug}`)}
+              className="featured-card"
+            >
+              <div className="featured-card__preview">
+                <div className="proj-card__browser-bar">
+                  <div className="dot dot--r" />
+                  <div className="dot dot--y" />
+                  <div className="dot dot--g" />
+                  <span className="proj-card__url">{proj.url}</span>
+                </div>
+                <img src={proj.cover} alt={`Captura de ${proj.name}`} className="featured-card__img" loading="lazy" />
+              </div>
+              <div className="featured-card__body">
+                <div className="proj-card__company">{proj.context[lang]}</div>
+                <div className="featured-card__name">{proj.name}</div>
+                <p className="featured-card__desc">{proj.summary[lang]}</p>
+                <div className="tag-row">
+                  {proj.cardTags.map((tag) => (
+                    <span key={tag} className="tag">{tag}</span>
+                  ))}
+                </div>
+                <div className="featured-card__link">
+                  {t.projects.caseStudy}
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                  </svg>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        {/* ── Sitios para clientes (Consigue Ventas) ── */}
+        <h3 className="projects__group-title">{t.projects.clients}</h3>
         <p className="projects__sub">
-          {t.projects.sub} <strong>Consigue Ventas</strong>.
+          {t.projects.clientsSub} <strong>Consigue Ventas</strong>.
         </p>
 
         <div className="projects__grid">

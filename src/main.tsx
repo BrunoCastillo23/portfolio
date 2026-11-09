@@ -4,7 +4,7 @@ import App from './App';
 import { LangProvider } from './context/LangContext';
 import './styles/index.css';
 import './styles/extras.css';
-import './styles/exp-tabs.css';
+import './styles/projects.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

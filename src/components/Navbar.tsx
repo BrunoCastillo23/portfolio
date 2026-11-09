@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import ThemeToggle from './ThemeToggle';
 import { useLang } from '../context/LangContext';
+import { linkTo } from '../router';
 
-const Navbar: React.FC = () => {
+// isHome=false en las páginas de detalle: los enlaces #seccion pasan a /#seccion
+const Navbar: React.FC<{ isHome?: boolean }> = ({ isHome = true }) => {
   const { lang, t, toggle: toggleLang } = useLang();
+  const href = (h: string) => (isHome ? h : `/${h}`);
+  const go = (h: string, after?: () => void) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+    after?.();
+    if (!isHome) linkTo(`/${h}`)(e);
+  };
   const [active,   setActive]   = useState('');
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -51,7 +58,7 @@ const Navbar: React.FC = () => {
         <div className="nav__inner">
 
           {/* ── Izquierda: Logo ── */}
-          <a href="#hero" className="nav__logo" onClick={closeMenu}>
+          <a href={href('#hero')} className="nav__logo" onClick={go('#hero', closeMenu)}>
             bruno<span>.</span>dev
           </a>
 
@@ -60,7 +67,8 @@ const Navbar: React.FC = () => {
             {navItems.map((item) => (
               <li key={item.href}>
                 <a
-                  href={item.href}
+                  href={href(item.href)}
+                  onClick={go(item.href)}
                   className={`nav__link${active === item.href.replace('#', '') ? ' nav__link--active' : ''}`}
                 >
                   {item.label}
@@ -74,7 +82,7 @@ const Navbar: React.FC = () => {
           <div className="nav__right">
             <LangBtn />
             <ThemeToggle />
-            <a href="#contacto" className="nav__cta">
+            <a href={href('#contacto')} onClick={go('#contacto')} className="nav__cta">
               {t.nav.contact}
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <line x1="5" y1="12" x2="19" y2="12"/>
@@ -100,9 +108,9 @@ const Navbar: React.FC = () => {
         {navItems.map((item) => (
           <a
             key={item.href}
-            href={item.href}
+            href={href(item.href)}
             className={`nav__mobile-link${active === item.href.replace('#', '') ? ' nav__mobile-link--active' : ''}`}
-            onClick={closeMenu}
+            onClick={go(item.href, closeMenu)}
           >
             {item.label}
           </a>
@@ -112,7 +120,7 @@ const Navbar: React.FC = () => {
           <LangBtn />
           <ThemeToggle />
         </div>
-        <a href="#contacto" className="nav__mobile-cta" onClick={closeMenu}>
+        <a href={href('#contacto')} className="nav__mobile-cta" onClick={go('#contacto', closeMenu)}>
           {t.nav.contact}
         </a>
       </div>
