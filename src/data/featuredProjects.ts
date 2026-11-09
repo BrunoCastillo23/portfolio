@@ -17,6 +17,8 @@ import pppPasantia       from '../assets/proyectos/practicas-unjfsc/estudiante-p
 import pppTitPanel       from '../assets/proyectos/practicas-unjfsc/titular-panel.webp';
 import pppTitConfig      from '../assets/proyectos/practicas-unjfsc/titular-config.webp';
 
+import { BadgeCheck, Bell, BookOpen, Building2, CalendarDays, ChartColumn, ClipboardCheck, FileText, FolderOpen, GraduationCap, HardHat, KeyRound, Package, Presentation, School, ShieldCheck, Tractor, Trees, TrendingUp, UserCog, Users, Wallet, type LucideIcon } from 'lucide-react';
+
 type L = { es: string; en: string };
 
 export interface FeaturedProject {
@@ -33,8 +35,8 @@ export interface FeaturedProject {
   summary: L;           // texto corto para la card
   overview: L[];        // párrafos de "¿Qué resuelve?"
   stats: { value: string; label: L }[];
-  users: { icon: string; name: L; desc: L }[];
-  modules: { icon: string; name: L; desc: L }[];
+  users: { icon: LucideIcon; name: L; desc: L }[];
+  modules: { icon: LucideIcon; name: L; desc: L }[];
   highlights: L[];      // arquitectura y buenas prácticas
   tech: { group: L; items: string[] }[];
   cardTags: string[];
@@ -78,26 +80,26 @@ export const featuredProjects: FeaturedProject[] = [
       { value: 'CI/CD', label: { es: 'Despliegue en cada merge', en: 'Deploy on every merge' } },
     ],
     users: [
-      { icon: '🎓', name: { es: 'Estudiante', en: 'Student' },
+      { icon: GraduationCap, name: { es: 'Estudiante', en: 'Student' },
         desc: { es: 'Sube su expediente, registra su empresa por RUC, entrega plan e informe y sigue su avance en un panel con tareas pendientes.', en: 'Uploads their records, registers their company by RUC, submits plan and report, and tracks progress on a dashboard with pending tasks.' } },
-      { icon: '👨‍🏫', name: { es: 'Docente titular', en: 'Lead professor' },
+      { icon: Presentation, name: { es: 'Docente titular', en: 'Lead professor' },
         desc: { es: 'Aprueba, observa o rechaza las empresas propuestas y configura las etapas y requisitos documentales del ciclo.', en: 'Approves, flags or rejects proposed companies and configures the stages and document requirements of each term.' } },
-      { icon: '🧑‍💼', name: { es: 'Docente supervisor', en: 'Supervising professor' },
+      { icon: ClipboardCheck, name: { es: 'Docente supervisor', en: 'Supervising professor' },
         desc: { es: 'Supervisa a sus grupos de estudiantes, revisa entregas y registra la evaluación de cada práctica.', en: 'Supervises student groups, reviews submissions and records the grade for each internship.' } },
-      { icon: '🏢', name: { es: 'Empresa', en: 'Company' },
+      { icon: Building2, name: { es: 'Empresa', en: 'Company' },
         desc: { es: 'Activa su cuenta por invitación y acepta o rechaza a los estudiantes que quieren hacer prácticas con ella.', en: 'Activates its account via invitation and accepts or rejects students who want to intern there.' } },
-      { icon: '🛡️', name: { es: 'Administrador', en: 'Administrator' },
+      { icon: ShieldCheck, name: { es: 'Administrador', en: 'Administrator' },
         desc: { es: 'Gestiona usuarios, facultades, escuelas, semestres y secciones, y publica recursos para cada perfil.', en: 'Manages users, faculties, schools, terms and sections, and publishes resources for each profile.' } },
     ],
     modules: [
-      { icon: '🔐', name: { es: 'Identidad y accesos', en: 'Identity & access' }, desc: { es: 'Login, perfiles, roles y permisos por tipo de usuario.', en: 'Login, profiles, roles and per-user-type permissions.' } },
-      { icon: '🏫', name: { es: 'Gestión académica', en: 'Academic management' }, desc: { es: 'Facultades, escuelas, semestres y secciones.', en: 'Faculties, schools, terms and sections.' } },
-      { icon: '📁', name: { es: 'Expediente', en: 'Student records' }, desc: { es: 'Carga y validación de ficha de matrícula y récord académico.', en: 'Upload and validation of enrollment form and transcript.' } },
-      { icon: '🏢', name: { es: 'Validación de empresas', en: 'Company validation' }, desc: { es: 'Consulta de RUC, revisión del titular, invitación y activación de la empresa.', en: 'RUC lookup, professor review, company invitation and activation.' } },
-      { icon: '📝', name: { es: 'Pasantía y formalización', en: 'Internship & formalization' }, desc: { es: 'Datos de la práctica, jefe inmediato y documentos de formalización.', en: 'Internship details, direct supervisor and formalization documents.' } },
-      { icon: '📊', name: { es: 'Plan e informe', en: 'Plan & report' }, desc: { es: 'Entrega y revisión del plan y del informe final de prácticas.', en: 'Submission and review of the internship plan and final report.' } },
-      { icon: '👥', name: { es: 'Supervisión y evaluación', en: 'Supervision & grading' }, desc: { es: 'Grupos de supervisión, seguimiento y calificación.', en: 'Supervision groups, follow-up and grading.' } },
-      { icon: '🔔', name: { es: 'Notificaciones y recursos', en: 'Notifications & resources' }, desc: { es: 'Avisos por correo y en la plataforma, y material por perfil.', en: 'Email and in-app notices, plus per-profile materials.' } },
+      { icon: KeyRound, name: { es: 'Identidad y accesos', en: 'Identity & access' }, desc: { es: 'Login, perfiles, roles y permisos por tipo de usuario.', en: 'Login, profiles, roles and per-user-type permissions.' } },
+      { icon: School, name: { es: 'Gestión académica', en: 'Academic management' }, desc: { es: 'Facultades, escuelas, semestres y secciones.', en: 'Faculties, schools, terms and sections.' } },
+      { icon: FolderOpen, name: { es: 'Expediente', en: 'Student records' }, desc: { es: 'Carga y validación de ficha de matrícula y récord académico.', en: 'Upload and validation of enrollment form and transcript.' } },
+      { icon: BadgeCheck, name: { es: 'Validación de empresas', en: 'Company validation' }, desc: { es: 'Consulta de RUC, revisión del titular, invitación y activación de la empresa.', en: 'RUC lookup, professor review, company invitation and activation.' } },
+      { icon: FileText, name: { es: 'Pasantía y formalización', en: 'Internship & formalization' }, desc: { es: 'Datos de la práctica, jefe inmediato y documentos de formalización.', en: 'Internship details, direct supervisor and formalization documents.' } },
+      { icon: ChartColumn, name: { es: 'Plan e informe', en: 'Plan & report' }, desc: { es: 'Entrega y revisión del plan y del informe final de prácticas.', en: 'Submission and review of the internship plan and final report.' } },
+      { icon: Users, name: { es: 'Supervisión y evaluación', en: 'Supervision & grading' }, desc: { es: 'Grupos de supervisión, seguimiento y calificación.', en: 'Supervision groups, follow-up and grading.' } },
+      { icon: Bell, name: { es: 'Notificaciones y recursos', en: 'Notifications & resources' }, desc: { es: 'Avisos por correo y en la plataforma, y material por perfil.', en: 'Email and in-app notices, plus per-profile materials.' } },
     ],
     highlights: [
       { es: 'Arquitectura modular por dominios: cada área (identidad, académico, expediente, empresas, supervisión…) tiene sus páginas, componentes y API pública propios.', en: 'Domain-based modular architecture: each area (identity, academic, records, companies, supervision…) owns its pages, components and public API.' },
@@ -159,20 +161,20 @@ export const featuredProjects: FeaturedProject[] = [
       { value: '24/7', label: { es: 'En producción con HTTPS y respaldos', en: 'In production with HTTPS and backups' } },
     ],
     users: [
-      { icon: '👨‍💼', name: { es: 'Administrador', en: 'Administrator' },
+      { icon: UserCog, name: { es: 'Administrador', en: 'Administrator' },
         desc: { es: 'Acceso total: usuarios, finanzas, planilla, campañas y reportes de rentabilidad por lote.', en: 'Full access: users, finances, payroll, seasons and per-plot profitability reports.' } },
-      { icon: '🧑‍🌾', name: { es: 'Operador / capataz', en: 'Operator / foreman' },
+      { icon: HardHat, name: { es: 'Operador / capataz', en: 'Operator / foreman' },
         desc: { es: 'Registra labores, asistencia e inventario desde el celular en el campo, con o sin conexión.', en: 'Logs field work, attendance and inventory from a phone in the field, online or offline.' } },
     ],
     modules: [
-      { icon: '🌳', name: { es: 'Fundos y lotes', en: 'Farms & plots' }, desc: { es: 'Hectáreas, número de árboles y cultivos por lote.', en: 'Hectares, tree count and crops per plot.' } },
-      { icon: '📅', name: { es: 'Planificación', en: 'Planning' }, desc: { es: 'Programa labores, reprograma o cancela y ve lo pendiente de la semana.', en: 'Schedule, reschedule or cancel tasks and see what is due this week.' } },
-      { icon: '🚜', name: { es: 'Labores de campo', en: 'Field work' }, desc: { es: 'Riego, fumigación, abonamiento, poda y cosecha con su detalle técnico.', en: 'Irrigation, spraying, fertilizing, pruning and harvest with technical details.' } },
-      { icon: '📗', name: { es: 'Cuaderno fitosanitario', en: 'Phytosanitary log' }, desc: { es: 'Registro SENASA, carencia y reingreso; exporta a PDF y Excel (CSV).', en: 'SENASA registry, pre-harvest and re-entry intervals; exports to PDF and Excel.' } },
-      { icon: '👷', name: { es: 'Trabajadores y asistencia', en: 'Workers & attendance' }, desc: { es: 'Fijos y jornaleros; asistencia diaria en un toque.', en: 'Permanent and day workers; one-tap daily attendance.' } },
-      { icon: '💵', name: { es: 'Planilla', en: 'Payroll' }, desc: { es: 'Cálculo automático según días trabajados y tarifa.', en: 'Automatic calculation from days worked and rate.' } },
-      { icon: '📦', name: { es: 'Inventario', en: 'Inventory' }, desc: { es: 'Insumos, movimientos y alertas de stock mínimo.', en: 'Inputs, stock movements and low-stock alerts.' } },
-      { icon: '📈', name: { es: 'Ventas, finanzas y rentabilidad', en: 'Sales, finance & profitability' }, desc: { es: 'Ventas por cliente, gastos y costo por hectárea por campaña.', en: 'Sales by customer, expenses and cost per hectare per season.' } },
+      { icon: Trees, name: { es: 'Fundos y lotes', en: 'Farms & plots' }, desc: { es: 'Hectáreas, número de árboles y cultivos por lote.', en: 'Hectares, tree count and crops per plot.' } },
+      { icon: CalendarDays, name: { es: 'Planificación', en: 'Planning' }, desc: { es: 'Programa labores, reprograma o cancela y ve lo pendiente de la semana.', en: 'Schedule, reschedule or cancel tasks and see what is due this week.' } },
+      { icon: Tractor, name: { es: 'Labores de campo', en: 'Field work' }, desc: { es: 'Riego, fumigación, abonamiento, poda y cosecha con su detalle técnico.', en: 'Irrigation, spraying, fertilizing, pruning and harvest with technical details.' } },
+      { icon: BookOpen, name: { es: 'Cuaderno fitosanitario', en: 'Phytosanitary log' }, desc: { es: 'Registro SENASA, carencia y reingreso; exporta a PDF y Excel (CSV).', en: 'SENASA registry, pre-harvest and re-entry intervals; exports to PDF and Excel.' } },
+      { icon: Users, name: { es: 'Trabajadores y asistencia', en: 'Workers & attendance' }, desc: { es: 'Fijos y jornaleros; asistencia diaria en un toque.', en: 'Permanent and day workers; one-tap daily attendance.' } },
+      { icon: Wallet, name: { es: 'Planilla', en: 'Payroll' }, desc: { es: 'Cálculo automático según días trabajados y tarifa.', en: 'Automatic calculation from days worked and rate.' } },
+      { icon: Package, name: { es: 'Inventario', en: 'Inventory' }, desc: { es: 'Insumos, movimientos y alertas de stock mínimo.', en: 'Inputs, stock movements and low-stock alerts.' } },
+      { icon: TrendingUp, name: { es: 'Ventas, finanzas y rentabilidad', en: 'Sales, finance & profitability' }, desc: { es: 'Ventas por cliente, gastos y costo por hectárea por campaña.', en: 'Sales by customer, expenses and cost per hectare per season.' } },
     ],
     highlights: [
       { es: 'PWA offline-first: Service Worker para la interfaz y una cola de sincronización que guarda labores y asistencia sin señal y las envía al volver la conexión.', en: 'Offline-first PWA: Service Worker for the UI plus a sync queue that stores tasks and attendance without signal and sends them when the connection returns.' },

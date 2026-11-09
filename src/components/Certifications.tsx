@@ -1,10 +1,11 @@
 import React from 'react';
 import { useLang } from '../context/LangContext';
+import { Database, Languages, Presentation, type LucideIcon } from 'lucide-react';
 
 type L = { es: string; en: string };
 
 interface Item {
-  icon: string;
+  icon: LucideIcon;
   kind: L;
   title: L;
   org: string;
@@ -14,7 +15,7 @@ interface Item {
 
 const items: Item[] = [
   {
-    icon: '🗄️',
+    icon: Database,
     kind: { es: 'Certificación', en: 'Certification' },
     title: { es: 'Especialización en Microsoft SQL Server', en: 'Microsoft SQL Server Specialization' },
     org: 'Datux Perú S.A.C.',
@@ -22,7 +23,7 @@ const items: Item[] = [
     detail: { es: 'Niveles básico, intermedio y avanzado · 68 horas · Nota 19/20', en: 'Basic, intermediate and advanced levels · 68 hours · Grade 19/20' },
   },
   {
-    icon: '🌐',
+    icon: Languages,
     kind: { es: 'Idioma', en: 'Language' },
     title: { es: 'Inglés — nivel intermedio', en: 'English — intermediate level' },
     org: 'Instituto de Idiomas UNJFSC',
@@ -30,7 +31,7 @@ const items: Item[] = [
     detail: { es: 'Básico (2023–2024) e intermedio (2024–2025)', en: 'Basic (2023–2024) and intermediate (2024–2025)' },
   },
   {
-    icon: '🎪',
+    icon: Presentation,
     kind: { es: 'Evento', en: 'Event' },
     title: { es: 'DevFest Lima 2025', en: 'DevFest Lima 2025' },
     org: 'Google Developer Groups',
@@ -50,7 +51,7 @@ const Certifications: React.FC = () => {
           {items.map((it) => (
             <article key={it.title.es} className="cert-card">
               <div className="cert-card__top">
-                <div className="pd-card__icon">{it.icon}</div>
+                <div className="pd-card__icon"><it.icon size={20} strokeWidth={1.8} aria-hidden="true" /></div>
                 <span className="exp-badge exp-badge--accent">{it.kind[lang]}</span>
               </div>
               <h3 className="cert-card__title">{it.title[lang]}</h3>

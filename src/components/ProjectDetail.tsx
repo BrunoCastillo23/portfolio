@@ -128,7 +128,7 @@ const ProjectDetail: React.FC<{ project: FeaturedProject }> = ({ project: p }) =
           <div className="pd-grid pd-grid--users">
             {p.users.map((u) => (
               <div key={u.name.es} className="pd-card">
-                <div className="pd-card__icon">{u.icon}</div>
+                <div className="pd-card__icon"><u.icon size={20} strokeWidth={1.8} aria-hidden="true" /></div>
                 <div className="pd-card__title">{u.name[lang]}</div>
                 <p className="pd-card__desc">{u.desc[lang]}</p>
               </div>
@@ -144,7 +144,7 @@ const ProjectDetail: React.FC<{ project: FeaturedProject }> = ({ project: p }) =
           <div className="pd-grid pd-grid--modules">
             {p.modules.map((m) => (
               <div key={m.name.es} className="pd-card pd-card--compact">
-                <div className="pd-card__icon">{m.icon}</div>
+                <div className="pd-card__icon"><m.icon size={20} strokeWidth={1.8} aria-hidden="true" /></div>
                 <div className="pd-card__title">{m.name[lang]}</div>
                 <p className="pd-card__desc">{m.desc[lang]}</p>
               </div>

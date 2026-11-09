@@ -283,3 +283,23 @@
 .btn--dark:hover, .btn--white:hover, .nav__cta:hover, .nav__mobile-cta:hover { background: #0f4fa0; }
 .footer__stack span { opacity: 1; }
 [data-theme="light"] .btn--dark:hover, [data-theme="light"] .btn--white:hover, [data-theme="light"] .nav__cta:hover, [data-theme="light"] .nav__mobile-cta:hover { background: #0b3d7d; }
+
+/* ── Testimonios: 6 tarjetas en 3 columnas y avatar con iniciales ── */
+@media (min-width: 1025px) { .testimonials__grid { grid-template-columns: repeat(3, 1fr); } }
+.testi-card__photo--initials {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--tag-bg); color: var(--accent);
+  font-weight: 600; font-size: 17px; letter-spacing: 0.02em;
+}
+
+/* ── Párrafos justificados (con guiones para evitar huecos grandes) ── */
+.hero__desc, .about__text, .exp-card__desc, .exp-achievement span, .contact__desc,
+.projects__sub, .skills__sub, .experience__sub,
+.featured-card__desc, .proj-card__desc, .note-card__summary, .cert-card__detail,
+.pd-tagline, .pd-text, .pd-card__desc, .pd-highlight span, .note__body p, .note__body li {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+.pd-card__icon { color: var(--accent); border: 1px solid var(--border); }
+.about__badge-icon { color: var(--accent); flex-shrink: 0; }

@@ -5,6 +5,7 @@ import fotoBrenda  from '../assets/reseñas/Brenda-Nicole-Tasayco-Saravia.webp';
 import fotomaria   from '../assets/reseñas/Maria-Trigoso-Losa.webp';
 import fotoMartin  from '../assets/reseñas/Martín-Alonso-Andrés-Puertas-Cuadros.webp';
 import fotoVictor  from '../assets/reseñas/Victor-Nontol-Nureña.webp';
+import fotoCarlos  from '../assets/reseñas/Carlos-Orlando-Claros-Vasquez.webp';
 
 interface Testimonial {
   name: string;
@@ -13,11 +14,36 @@ interface Testimonial {
   period: string;
   linkedin: string;
   text: { es: string; en: string };
-  photo: string;
+  photo?: string;      // sin foto se muestran las iniciales
   pending: boolean;
 }
 
 const testimonials: Testimonial[] = [
+  {
+    name: 'Eddy Iván Quispe Soto',
+    role: { es: 'Director de la Escuela de Ingeniería de Sistemas', en: 'Director, Systems Engineering School' },
+    company: 'UNJFSC · FIISI',
+    period: 'Ago 2026 – Presente',
+    linkedin: 'https://www.linkedin.com/in/eddy-iv%C3%A1n-quispe-soto-609a2845/',
+    pending: false,
+    text: {
+      es: 'Bruno viene realizando sus prácticas pre profesionales en nuestra Escuela liderando el desarrollo del Sistema de Gestión de Prácticas Pre Profesionales. Ha asumido con responsabilidad la coordinación del equipo de estudiantes desarrolladores y ha sabido traducir las necesidades de la Escuela en una plataforma funcional que hoy apoya a estudiantes, docentes y empresas. Destaco su compromiso, su capacidad de organización y su disposición para atender cada requerimiento.',
+      en: 'Bruno is doing his pre-professional internship at our School, leading the development of the Pre-professional Internship Management System. He has responsibly taken on the coordination of the student development team and has translated the School’s needs into a working platform that now supports students, faculty and companies. I highlight his commitment, his organizational skills and his willingness to address every requirement.',
+    },
+  },
+  {
+    name: 'Carlos Orlando Claros Vasquez',
+    role: { es: 'Supervisor de Prácticas Pre Profesionales', en: 'Internship Supervisor' },
+    company: 'UNJFSC · Escuela de Ingeniería de Sistemas',
+    period: 'Ago 2026 – Presente',
+    linkedin: 'https://www.linkedin.com/in/carlos-orlando-claros-vasquez-8054a2136/',
+    photo: fotoCarlos,
+    pending: false,
+    text: {
+      es: 'Como supervisor de sus prácticas, he seguido de cerca el trabajo de Bruno como Developer Lead. Organiza al equipo, revisa el código de sus compañeros y mantiene la plataforma en producción con buenas prácticas. Es puntual en sus entregas, comunica con claridad los avances y propone soluciones cuando surgen problemas. Un estudiante con criterio técnico y capacidad de liderazgo.',
+      en: 'As his internship supervisor, I have closely followed Bruno’s work as Developer Lead. He organizes the team, reviews his peers’ code and keeps the platform running in production with good practices. He delivers on time, communicates progress clearly and proposes solutions when problems arise. A student with technical judgment and leadership skills.',
+    },
+  },
   {
     name: 'Brenda Nicole Tasayco Saravia',
     role: { es: 'Líder de Talento Humano', en: 'Human Talent Leader' },
@@ -101,7 +127,13 @@ const TestiCard: React.FC<{ item: Testimonial; isActive: boolean; onClick: () =>
       onClick={onClick}
     >
       <div className="testi-card__header-row">
-        <img src={item.photo} alt={item.name} className="testi-card__photo" loading="lazy" width={80} height={80} />
+        {item.photo ? (
+          <img src={item.photo} alt={item.name} className="testi-card__photo" loading="lazy" width={80} height={80} />
+        ) : (
+          <div className="testi-card__photo testi-card__photo--initials" aria-hidden="true">
+            {item.name.split(' ').filter((_, i, a) => i === 0 || i === a.length - 2).map((w) => w[0]).join('')}
+          </div>
+        )}
         <div className="testi-card__info">
           <div className="testi-card__name">{item.name}</div>
           <div className="testi-card__role">{item.role[lang]}</div>

@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useLang } from '../context/LangContext';
+import { GraduationCap, MapPin, Cake, Laptop, Languages, Presentation } from 'lucide-react';
+
+// Un ícono por insignia, en el mismo orden que t.about.badges
+const badgeIcons = [GraduationCap, MapPin, Cake, Laptop, Languages, Presentation];
 
 import foto4       from '../assets/fotos/Perfil_04.webp';
 import fotoDevFest from '../assets/fotos/DevFest.webp';
@@ -41,9 +45,15 @@ const About: React.FC = () => {
             <p className="about__text">{t.about.p3}</p>
 
             <div className="about__badges">
-              {t.about.badges.map((b) => (
-                <span key={b} className="about__badge">{b}</span>
-              ))}
+              {t.about.badges.map((b, i) => {
+                const Icon = badgeIcons[i];
+                return (
+                  <span key={b} className="about__badge">
+                    {Icon && <Icon size={14} strokeWidth={2} aria-hidden="true" className="about__badge-icon" />}
+                    {b}
+                  </span>
+                );
+              })}
             </div>
 
             <div className="about__stats-inline">
