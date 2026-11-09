@@ -2,6 +2,7 @@
 
 import fundoLanding      from '../assets/proyectos/fundo-castillo/landing.webp';
 import fundoCover        from '../assets/proyectos/fundo-castillo/cover.webp';
+import fundoLogo         from '../assets/proyectos/fundo-castillo/logo.webp';
 import fundoDashboard    from '../assets/proyectos/fundo-castillo/dashboard.webp';
 import fundoPlanif       from '../assets/proyectos/fundo-castillo/planificacion.webp';
 import fundoLabores      from '../assets/proyectos/fundo-castillo/labores.webp';
@@ -11,6 +12,7 @@ import fundoMovil        from '../assets/proyectos/fundo-castillo/movil-asistenc
 
 import pppLanding        from '../assets/proyectos/practicas-unjfsc/landing.webp';
 import pppCover          from '../assets/proyectos/practicas-unjfsc/cover.webp';
+import pppLogo           from '../assets/proyectos/practicas-unjfsc/logo.webp';
 import pppEstPanel       from '../assets/proyectos/practicas-unjfsc/estudiante-panel.webp';
 import pppExpediente     from '../assets/proyectos/practicas-unjfsc/estudiante-expediente.webp';
 import pppPasantia       from '../assets/proyectos/practicas-unjfsc/estudiante-pasantia.webp';
@@ -27,6 +29,7 @@ export interface FeaturedProject {
   url: string;          // dominio mostrado en la barra del navegador
   href: string;         // enlace a la plataforma en producción
   repo?: string;        // repositorio público (si lo hay)
+  logo: string;          // logo de la institución / marca (cabecera del caso de estudio)
   cover: string;        // versión liviana (960 px) para card y portada
   context: L;           // "Proyecto propio", "Prácticas pre profesionales · UNJFSC"
   role: L;
@@ -51,6 +54,7 @@ export const featuredProjects: FeaturedProject[] = [
     url: 'practicaspre.kerpun.com',
     href: 'https://practicaspre.kerpun.com/',
     repo: 'https://github.com/nimudx/system-ppp-unjfsc',
+    logo: pppLogo,
     cover: pppCover,
     context: { es: 'Prácticas pre profesionales · UNJFSC', en: 'Pre-professional internship · UNJFSC' },
     role:    { es: 'Developer Lead', en: 'Developer Lead' },
@@ -132,6 +136,7 @@ export const featuredProjects: FeaturedProject[] = [
     name: 'Fundo Castillo — AgroERP',
     url: 'fundocastillo.brunocastillo.dev',
     href: 'https://fundocastillo.brunocastillo.dev/',
+    logo: fundoLogo,
     cover: fundoCover,
     context: { es: 'Proyecto propio · En producción', en: 'Own project · In production' },
     role:    { es: 'Desarrollador Full Stack', en: 'Full Stack Developer' },

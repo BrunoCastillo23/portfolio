@@ -33,6 +33,7 @@ function withMeta(html: string, r: SeoRoute): string {
   set('name', 'twitter:title', r.title)
   set('name', 'twitter:description', r.description)
   set('name', 'twitter:image', image)
+  set('property', 'og:image:alt', r.title)
   return html
 }
 
@@ -63,7 +64,7 @@ function seoPages(): Plugin {
         path: '/404',
         title: 'Página no encontrada | Bruno Castillo',
         description: 'La dirección que buscas no existe o fue movida.',
-        image: '/og-image.jpg',
+        image: '/og/home.jpg',
       }).replace(/(<meta\s+name="robots"\s+content=")[^"]*(")/, '$1noindex$2')
       writeFileSync('dist/404.html', notFound)
 

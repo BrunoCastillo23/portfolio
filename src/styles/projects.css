@@ -303,3 +303,36 @@
 }
 .pd-card__icon { color: var(--accent); border: 1px solid var(--border); }
 .about__badge-icon { color: var(--accent); flex-shrink: 0; }
+
+/* ── Caso de estudio: logo en la cabecera, problema en dos columnas y arquitectura en tarjetas ── */
+.pd-hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 48px; align-items: center; }
+.pd-hero__logo { display: flex; justify-content: center; }
+.pd-hero__logo img {
+  width: 240px; height: 240px; object-fit: contain; border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--border), 0 0 60px rgba(77,159,255,0.18);
+}
+.pd-split { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+.pd-split__shot img { aspect-ratio: 16 / 10; }
+.pd-grid--highlights { grid-template-columns: repeat(3, 1fr); }
+.pd-highlight-card { display: flex; flex-direction: column; gap: 10px; }
+.pd-highlight-card__num { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--accent); letter-spacing: 0.08em; }
+.pd-highlight-card .pd-card__desc { font-size: 13.5px; }
+@media (max-width: 1024px) {
+  .pd-grid--highlights { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .pd-hero__grid, .pd-split { grid-template-columns: 1fr; gap: 28px; }
+  .pd-hero__logo { order: -1; justify-content: flex-start; }
+  .pd-hero__logo img { width: 110px; height: 110px; }
+}
+@media (max-width: 600px) {
+  .pd-grid--highlights { grid-template-columns: 1fr; }
+}
+/* En pantallas angostas el justificado deja huecos grandes: se alinea a la izquierda */
+@media (max-width: 600px) {
+  .hero__desc, .about__text, .exp-card__desc, .exp-achievement span, .contact__desc,
+  .projects__sub, .skills__sub, .experience__sub,
+  .featured-card__desc, .proj-card__desc, .note-card__summary, .cert-card__detail,
+  .pd-tagline, .pd-text, .pd-card__desc, .pd-highlight span, .note__body p, .note__body li,
+  .testi-card__text { text-align: left; }
+}

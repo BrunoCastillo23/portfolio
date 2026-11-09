@@ -63,6 +63,8 @@ const ProjectDetail: React.FC<{ project: FeaturedProject }> = ({ project: p }) =
             <Arrow dir="left" /> {t.detail.back}
           </a>
 
+          <div className="pd-hero__grid">
+          <div className="pd-hero__text">
           <div className="sec-label">{p.context[lang]}</div>
           <h1 className="pd-title">{p.name}</h1>
           <p className="pd-tagline">{p.tagline[lang]}</p>
@@ -87,6 +89,12 @@ const ProjectDetail: React.FC<{ project: FeaturedProject }> = ({ project: p }) =
                 <GitHubIcon /> {t.detail.code}
               </a>
             )}
+          </div>
+          </div>
+
+          <div className="pd-hero__logo">
+            <img src={p.logo} alt={`Logo ${p.name}`} width={240} height={240} />
+          </div>
           </div>
 
           <button className="pd-cover" onClick={() => setLightbox(0)} aria-label={p.gallery[0].caption[lang]}>
@@ -115,9 +123,15 @@ const ProjectDetail: React.FC<{ project: FeaturedProject }> = ({ project: p }) =
 
       {/* ── Problema ── */}
       <section className="pd-section">
-        <div className="wrap pd-narrow">
-          <h2 className="pd-h2">{t.detail.problem}</h2>
-          {p.overview.map((para, i) => <p key={i} className="pd-text">{para[lang]}</p>)}
+        <div className="wrap pd-split">
+          <div>
+            <h2 className="pd-h2">{t.detail.problem}</h2>
+            {p.overview.map((para, i) => <p key={i} className="pd-text">{para[lang]}</p>)}
+          </div>
+          <button className="pd-shot pd-split__shot" onClick={() => setLightbox(1)}>
+            <img src={p.gallery[1].src} alt="" loading="lazy" />
+            <span className="pd-shot__caption">{p.gallery[1].caption[lang]}</span>
+          </button>
         </div>
       </section>
 
@@ -155,13 +169,13 @@ const ProjectDetail: React.FC<{ project: FeaturedProject }> = ({ project: p }) =
 
       {/* ── Arquitectura ── */}
       <section className="pd-section pd-section--alt">
-        <div className="wrap pd-narrow">
+        <div className="wrap">
           <h2 className="pd-h2">{t.detail.highlights}</h2>
-          <div className="exp-card__achievements">
+          <div className="pd-grid pd-grid--highlights">
             {p.highlights.map((h, i) => (
-              <div key={i} className="exp-achievement pd-highlight">
-                <div className="exp-achievement__dot" />
-                <span>{h[lang]}</span>
+              <div key={i} className="pd-card pd-highlight-card">
+                <span className="pd-highlight-card__num">{String(i + 1).padStart(2, '0')}</span>
+                <p className="pd-card__desc">{h[lang]}</p>
               </div>
             ))}
           </div>
