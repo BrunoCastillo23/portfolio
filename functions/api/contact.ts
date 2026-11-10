@@ -30,7 +30,7 @@ const clean = (v: unknown, max: number) =>
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> => {
+async function handle({ request, env }: Ctx): Promise<Response> {
   let data: Record<string, unknown>;
   try {
     data = await request.json();
@@ -93,4 +93,16 @@ export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> =>
   }
 
   return json(200, { ok: true });
+}
+
+// Cualquier excepción inesperada se devuelve como JSON (en vez de la página
+// de error HTML de Cloudflare) para poder diagnosticarla desde el navegador.
+export const onRequestPost = async (ctx: Ctx): Promise<Response> => {
+  try {
+    return await handle(ctx);
+  } catch (err) {
+    const detail = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
+    console.error('contact exception', detail);
+    return json(500, { error: 'exception', detail: detail.slice(0, 300) });
+  }
 };
