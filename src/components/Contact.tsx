@@ -112,7 +112,7 @@ const Contact: React.FC = () => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ ...safePayload, token: captcha }),
         });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        if (!res.ok) throw new Error(`HTTP ${res.status} ${await res.text()}`);
       } else {
         await emailjs.send(EJ_SERVICE, EJ_TEMPLATE, safePayload, EJ_PUBLIC);
       }

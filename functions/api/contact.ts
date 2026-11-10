@@ -41,6 +41,14 @@ export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> =>
   // Honeypot: si viene lleno es un bot; respondemos OK sin enviar nada
   if (data.website) return json(200, { ok: true });
 
+  // Variables que faltan en Cloudflare Pages → error claro en vez de un fallo de EmailJS
+  const missing = ['TURNSTILE_SECRET_KEY', 'EMAILJS_SERVICE_ID', 'EMAILJS_TEMPLATE_ID', 'EMAILJS_PUBLIC_KEY', 'EMAILJS_PRIVATE_KEY']
+    .filter((k) => !env[k as keyof Env]);
+  if (missing.length) {
+    console.error('Faltan variables', missing);
+    return json(500, { error: 'missing_env', missing });
+  }
+
   const token = String(data.token ?? '');
   if (!token) return json(400, { error: 'missing_token' });
 
@@ -76,7 +84,13 @@ export const onRequestPost = async ({ request, env }: Ctx): Promise<Response> =>
       template_params: params,
     }),
   });
-  if (!send.ok) return json(502, { error: 'email_failed' });
+  if (!send.ok) {
+    // El texto de EmailJS no contiene secretos y ayuda a diagnosticar
+    // (ej. "API calls are disabled for non-browser applications").
+    const detail = (await send.text()).slice(0, 300);
+    console.error('EmailJS error', send.status, detail);
+    return json(502, { error: 'email_failed', status: send.status, detail });
+  }
 
   return json(200, { ok: true });
 };
