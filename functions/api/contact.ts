@@ -89,7 +89,8 @@ async function handle({ request, env }: Ctx): Promise<Response> {
     // (ej. "API calls are disabled for non-browser applications").
     const detail = (await send.text()).slice(0, 300);
     console.error('EmailJS error', send.status, detail);
-    return json(502, { error: 'email_failed', status: send.status, detail });
+    // 424 y no 502: Cloudflare reemplaza las respuestas 502 por su propia página de error
+    return json(424, { error: 'email_failed', status: send.status, detail });
   }
 
   return json(200, { ok: true });
